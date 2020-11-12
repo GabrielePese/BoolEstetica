@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/show-tratt/{id}', 'HomeController@showTratt')->name('show-tratt');
+Route::get('/create-tratt', 'LoggedController@createTratt')->name('create-tratt');
+Route::post('/store-tratt', 'LoggedController@storeTratt')->name('store-tratt');
+Route::get('/prenota/{id}', 'LoggedController@prenota')->name('prenota');
+Route::post('/prenotastore', 'LoggedController@prenotastore')->name('prenota-post');
+

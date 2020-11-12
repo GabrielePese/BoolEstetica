@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Service;
+use App\User;
+
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+class HomeController extends Controller{
+    public function index(){
+        $admin=User::where('admin', '=', '1') -> get();
+        $service = Service::all();
+        return view('home', compact('admin', 'service'));
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
+    public function showTratt($id){
+        
+        $service=Service::findOrFail($id);
+        return view('show', compact('service' ));
     }
 }
