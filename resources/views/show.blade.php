@@ -13,6 +13,19 @@
     {{$service -> promotion}}<br>
     {{$service -> disabled}}<br>
     {{$service -> delete}}
+    <br>
 
-        <a href="{{route('prenota', $service -> id, Auth::user()->id)}}">PRENOTA IL TUO TRATTAMENTO ORA</a>
+        <a href="{{route('prenota', $service -> id, )}}">PRENOTA IL TUO TRATTAMENTO ORA</a>
+        <br>
+        <br>
+        @auth
+            
+        @if (Auth::user() -> admin)
+        @if ($service -> promotion)
+        <a href="{{route('promo', $service -> id, )}}">DISATTIVA PROMO</a>
+        @else
+        <a href="{{route('promo', $service -> id, )}}">AGGIUNGI PROMOZIONE A QUESTO SERVIZIO</a>
+        @endif
+        @endif
+        @endauth
 @endsection

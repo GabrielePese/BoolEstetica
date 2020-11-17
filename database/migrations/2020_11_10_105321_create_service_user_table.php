@@ -20,8 +20,8 @@ class CreateServiceUserTable extends Migration
             $table->bigInteger('user_ID') -> unsigned();
             
             $table->dateTime('date_end');
-            $table->integer('riview_vote');
-            $table->text('riview_text');
+            $table->integer('review_vote')->nullable();
+            $table->text('review_text')-> nullable();
             $table->boolean('deleted') -> default(0);
 
             $table->timestamps();

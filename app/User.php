@@ -24,11 +24,8 @@ use Illuminate\Notifications\Notifiable;
         'phone',
         'admin'
     ];
-        public function services(){
-            return $this ->belongsToMany(Service::class); //-> withPivot('id','service_ID','user_ID','date_end','riview_vote','riview_text','deleted')
-        }
     
-
+    
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -37,7 +34,7 @@ use Illuminate\Notifications\Notifiable;
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
     /**
      * The attributes that should be cast to native types.
      *
@@ -46,4 +43,8 @@ use Illuminate\Notifications\Notifiable;
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+     public function services(){
+        return $this ->belongsToMany(Service::class)->withPivot('id','user_ID','service_ID', 'date_end', 'review_vote', 'review_text', 'deleted');
+     }
 }

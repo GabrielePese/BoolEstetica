@@ -20,8 +20,9 @@ class CreateServicesTable extends Migration
             $table->text('description');
             $table->integer('duration');
             $table->decimal('price' , 6,2);
-            $table->string('photo');
-            $table->string('video');
+            $table->decimal('originalprice', 6,2) -> nullable();
+            $table->string('photo') -> nullable();
+            $table->string('video')-> nullable();
             $table->integer('promotion') -> default(0);
             $table->integer('disabled') -> default(0);
             $table->integer('delete') -> default(0);

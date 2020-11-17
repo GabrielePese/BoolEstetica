@@ -11,6 +11,7 @@ class Service extends Model
         'description',
         'duration',
         'price',
+        'originalprice',
         'photo',
         'video',
         'promotion',
@@ -18,10 +19,10 @@ class Service extends Model
         'delete'
     ];
     public function users(){
-        return $this ->belongsToMany(User::class); //->withPivot('id', 'service_ID','user_ID', 'date_end' , 'riview_vote', 'riview_text', 'deleted')
+        return $this ->belongsToMany(User::class)->withPivot('id','user_ID','service_ID', 'date_end', 'review_vote', 'review_text', 'deleted');
     }
     public function promotion(){
-        return $this ->belongsTo(Promotion::class);
+        return $this ->hasMany(Promotion::class);
     }
 
 

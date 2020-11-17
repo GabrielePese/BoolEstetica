@@ -13,6 +13,6 @@ class Promotion extends Model
     ];
 
     public function services(){ 
-        return $this ->hasMany(Service::class); //->withPivot('ID', 'service_ID','name', 'discount')
+        return $this ->belongsTo (Service::class);// ->withPivot('ID', 'service_ID','name', 'discount');
     }
 }

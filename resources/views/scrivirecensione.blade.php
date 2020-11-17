@@ -1,0 +1,47 @@
+@extends('layouts.main-layout')
+
+@section('content')
+
+{{$id}}
+
+
+
+
+<form action="{{route('recensione-post' ,$provaOK -> id)}}" method="post"> 
+    @csrf
+    @method('post')
+    
+    <div style="display:none;">
+        <label for="service_ID"> service_ID </label>
+        <input type="number" name="service_ID" value="{{$provaOK -> service_ID}}">
+    </div>
+    <div style="display:none;">
+        <label for="user_ID"> user_ID </label>
+        <input type="number" name="user_ID" value="{{$provaOK -> user_ID}}">
+    </div>
+    <div style="display:none;">
+        <label for="date_end">date_end </label>
+        <input type="text" name="date_end" value="{{$provaOK -> date_end}}">
+    </div>
+    
+    <div>
+        <label for="review_vote"> review_vote </label>
+        <input type="number" name="review_vote" value="">
+    </div>
+    
+    <div>
+        <label for="review_text"> review_text </label>
+        <input type="text" name="review_text" value="">
+    </div>
+    
+    <div style="display:none">
+        <label for="deleted"> deleted </label>
+        <input type="number" name="deleted" value="0">
+    </div>
+    
+    
+    <Button type="submit"> AGGIUNGI APPUNTAMENTO</Button>
+</form>
+
+ 
+@endsection

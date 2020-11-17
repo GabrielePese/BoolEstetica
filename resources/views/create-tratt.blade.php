@@ -3,8 +3,8 @@
 @section('content')
 
 @auth
-@foreach ($admin as $a)
-@if ($a -> email == Auth::user()->email)
+
+@if (Auth::user()->admin)
    <form action="{{route('store-tratt')}}" method="post"> 
     @csrf
     @method('post')
@@ -23,10 +23,17 @@
     <input type="number" name="duration" value="">
 </div>
 
-<div>
+<div >
     <label for="price"> price </label>
-    <input type="number" name="price" value="">
+    <input type="number" data-mirror name="price" value="">
 </div>
+
+
+<div style="display:none;">
+    <label for="originalprice"> originalprice </label>
+    <input type="number" data-mirror name="originalprice" value="">
+</div>
+
 
 <div>
     <label for="photo"> photo </label>
@@ -53,12 +60,12 @@
     <input type="text" name="delete" value="">
 </div>
    
-<Button type="submit"> CREA NUOVO TRATTAMENTO</Button>
+<Button id="bottone" type="submit"> CREA NUOVO TRATTAMENTO</Button>
 </form>
     @else 
     SOLO L'AMMINISTRATORE PUO' AGGIUGNERE NUOVI TRATTAMENTI.
 @endif
-@endforeach
+
 @endauth       
 
 

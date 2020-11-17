@@ -3,37 +3,26 @@
 @section('content')
 
 
-    <form action="{{route('prenota-post')}}" method="post"> 
+    <form action="{{route('prenota-post', $servizio -> id)}}" method="post"> 
         @csrf
         @method('post')
-       <div >
-           <label for="service_ID"> service_ID </label>
-           <input type="text" name="service_ID" value="1">
-       </div>
+     
     
-       <div >
-        <label for="user_ID"> user_ID </label>
-        <input type="text" name="user_ID" value="1">
+   
+    
+    {{-- <div>
+        <label for="review_vote"> review_vote </label>
+        <input type="number" name="review_vote" value="">
     </div>
     
     <div>
-        <label for="date_end"> date_end </label>
-        <input type="number" name="date_end" value="">
+        <label for="review_text"> review_text </label>
+        <input type="text" name="review_text" value="">
     </div>
-    
-    <div>
-        <label for="riview_vote"> riview_vote </label>
-        <input type="number" name="riview_vote" value="">
-    </div>
-    
-    <div>
-        <label for="riview_text"> riview_text </label>
-        <input type="text" name="riview_text" value="">
-    </div>
-    
-    <div>
+     --}}
+    <div style="display:none">
         <label for="deleted"> deleted </label>
-        <input type="number" name="deleted" value="">
+        <input type="number" name="deleted" value="0">
     </div>
     
        
