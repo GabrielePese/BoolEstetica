@@ -18,7 +18,7 @@ class CreateServiceUserTable extends Migration
 
             $table->bigInteger('service_ID') -> unsigned();
             $table->bigInteger('user_ID') -> unsigned();
-            
+            $table->dateTime('date_start');
             $table->dateTime('date_end');
             $table->integer('review_vote')->nullable();
             $table->text('review_text')-> nullable();

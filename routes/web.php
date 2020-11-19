@@ -20,3 +20,7 @@ Route::get('/create-promo', 'LoggedController@createpromo')->name('create-promo'
 Route::post('/create-promo-store', 'LoggedController@createpromostore')->name('create-promo-store');
 Route::get('/scrivirecensione/{id}', 'LoggedController@scrivirecensione')->name('scrivirecensione');
 Route::post('/recensione-post/{id}', 'LoggedController@recensionepost')->name('recensione-post');
+Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anulla-app');
+
+
+Route::get('/calendar');

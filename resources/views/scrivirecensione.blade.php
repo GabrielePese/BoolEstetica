@@ -7,21 +7,25 @@
 
 
 
-<form action="{{route('recensione-post' ,$provaOK -> id)}}" method="post"> 
+<form action="{{route('recensione-post' ,$tabellaponte -> id)}}" method="post">   {{-- qui passo l'id della tabellaponte cioe' l'id della prenotazione --}}
     @csrf
     @method('post')
     
     <div style="display:none;">
         <label for="service_ID"> service_ID </label>
-        <input type="number" name="service_ID" value="{{$provaOK -> service_ID}}">
+        <input type="number" name="service_ID" value="{{$tabellaponte -> service_ID}}">
     </div>
     <div style="display:none;">
         <label for="user_ID"> user_ID </label>
-        <input type="number" name="user_ID" value="{{$provaOK -> user_ID}}">
+        <input type="number" name="user_ID" value="{{$tabellaponte -> user_ID}}">
+    </div>
+    <div style="display:none;">
+        <label for="date_start">date_start </label>
+        <input type="text" name="date_start" value="{{$tabellaponte -> date_start}}">
     </div>
     <div style="display:none;">
         <label for="date_end">date_end </label>
-        <input type="text" name="date_end" value="{{$provaOK -> date_end}}">
+        <input type="text" name="date_end" value="{{$tabellaponte -> date_end}}">
     </div>
     
     <div>

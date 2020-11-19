@@ -46,33 +46,26 @@ class LoggedController extends Controller
     }
 
     public function scrivirecensione($id){
-        $users = User::all();
-        $prova = DB::table('service_user')->where('id', '=', $id)-> get();
-        $provaOK = $prova[0];
         
-        // $userUtente = User::findOrFail($);  //qui prendo il singolo utente, che poi utilizzeró sotto anche se prendera'tutti gli utenti (non so il perche')
-        // $services = Service::all();
+        $tabella = DB::table('service_user')->where('id', '=', $id)-> get(); // qui prendo dalla tabella service_user dove id e'uguale all'id che gli passiamo noi cioe' id del service_user, cioe'id della prenotazione.
+        $tabellaponte = $tabella[0]; // qui prendiamo indice 0 dell'array. cosi ci da i risultati che vogliamo
         
-        // $ora = Carbon::now();
-        // $date_now = Carbon::parse($ora); //permette a carbon di leggere orario
-        // $date_now -> addHours(1); //aggiungo alla data un ora perche'lui prende la data di Londra quindi con un ora in meno
-        
-        // $prenotazioni = $users-> services->first()->pivot->get();  // prendo il contenuto nella tabella ponte UserService. 
+   
                
         
-        return view('scrivirecensione', compact('id','provaOK'));  
+        return view('scrivirecensione', compact('id','tabellaponte'));  
         
        
     }
 
     public function recensionepost(Request $request, $id){
-        // $prova = DB::table('service_user')->where('id', '=', $id)-> get();
-        // $provaOK = $prova[0];
+       
         
-        $data = $request -> all();
+        $data = $request -> all();   //prendo i vari dati inseriti nel form
         
-        $serviceID = $data['service_ID'];
+        $serviceID = $data['service_ID'];  //definisco i vari dati che mi interessano
         $userID = $data['user_ID'];
+        $datastart = $data['date_start'];
         $dateend =$data['date_end'];
 
         $vote = $data['review_vote'];
@@ -80,7 +73,7 @@ class LoggedController extends Controller
         $delete = $data['deleted'];
 
        
-        $data = [
+        $data = [    //qui modifico i dati di data
 
         
         'service_ID' => $serviceID,
@@ -94,7 +87,7 @@ class LoggedController extends Controller
     ];
     
 
-    DB::table('service_user')->where('id', '=', $id)-> update($data); 
+    DB::table('service_user')->where('id', '=', $id)-> update($data);   //faccio update con i data della tabella ponte con id uguale id della prenotazione
 
     return redirect() -> route('home');
     }
@@ -116,40 +109,50 @@ class LoggedController extends Controller
 
     public function prenota($id){
         $servizio = Service::findOrFail($id);
-        
-        return view ('prenotazione' , compact('servizio'));
+        $users = User::all();
+        return view ('prenotazione' , compact('servizio', 'users'));
     }
     
 
     public function prenotastore(Request $request, $id){
         $data = $request -> all();
+        $dataorario = $data['dataorario'];
+        $datagiorno =$data['datagiorno'];
+        
+
         $servizio = Service::findOrFail($id);
         $utenteID = Auth::user()-> id;
         $utente = User::findOrFail($utenteID);
         
         $durate = $servizio['duration']; //qui prendo la duration di servizio, cioe'il mio service che ho selezionato in questo momento.
 
-        // $review_vote = $data['review_vote'];
-        // $review_text = $data['review_text'];
         $del =$data['deleted'];
         
-        $ora = Carbon::now();
-        $date_end = Carbon::parse($ora); //permette a carbon di leggere orario
-        $date_end -> addHours(1); // per sistemare fuso orario,lui prende quello di londra che ha un'ora in meno quindi l'aggiungo io.
-        $date_end -> addMinutes($durate); 
-       
+        // $datagiorno = Carbon::parse($datagiorno);
+        // $dataorario = Carbon::parse($dataorario);
+
+        $date = $datagiorno . ' ' . $dataorario;
+        $date_start = Carbon::parse($date);
         
 
+        $date_end = Carbon::parse($datagiorno . ' ' . $dataorario) -> addMinutes($durate); 
         
-        
-                
         $utente -> services()->attach($servizio, [
+
+            'date_start' => $date_start,
             'date_end' => $date_end,
             // 'review_vote' => $review_vote,
             // 'review_text' => $review_text,
             'deleted' => $del
         ]);
 
+        return redirect() -> route('home');
+    }
+
+    public function annullaprenotaz($id){
+        $prenotazione = DB::table('service_user')-> where('id', '=', $id)->update(['deleted' => 1] );
+        
+        
         return redirect() -> route('home');
     }
 

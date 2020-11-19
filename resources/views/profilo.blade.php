@@ -33,10 +33,7 @@
            @endif
        @endforeach
        
-       {{-- <p>data : {{$prenotazione -> date_end}}</p>
-       <p>voto : {{$prenotazione -> review_vote}}</p>
-       <p>recensione : {{$prenotazione -> review_text}}</p> 
-       <hr> --}}
+       
     @endif
        
    @endforeach      
@@ -61,10 +58,6 @@
            @endif
        @endforeach
        
-       {{-- <p>data : {{$prenotazione -> date_end}}</p>
-       <p>voto : {{$prenotazione -> review_vote}}</p>
-       <p>recensione : {{$prenotazione -> review_text}}</p> 
-       <hr> --}}
     @endif
        
    @endforeach
@@ -77,29 +70,39 @@
    <div class="col-xs-6 " style="">
     <H1>DA FARE</H1>
 @foreach ($prenotazioni as $item => $prenotazione)
-@if ($prenotazione-> user_ID == Auth::user()->id)
-@if ($date_now -> lt($prenotazione -> date_end))
+@if ($prenotazione-> user_ID == Auth::user()->id) {{-- qui gli dico se ID della tabella ponte e'uguale all'id dell'utente autenticato. quindi di mostrarmi solo le prenotazioni dell'utente autenticato. --}}
+@if ($prenotazione -> deleted)
+@else    
+@if ($date_now -> lt($prenotazione -> date_end)) {{-- prendo solo quelli piu'piccoli con lt  --}}
 @foreach ($users as $user)
-   @if ($user-> id ==$prenotazione -> user_ID )
-       <p>utente : {{$user->name}}</p>
-   @endif
+@if ($user-> id ==$prenotazione -> user_ID )
+<p>utente : {{$user->name}}</p>
+@endif
 @endforeach
 @foreach ($services as $service)
-   @if ($service-> id ==$prenotazione -> service_ID )
-       <p>servizio : {{$service->name}}</p>
-       <p>Prezzo : {{$service ->price}} € </p>
-       
+@if ($service-> id ==$prenotazione -> service_ID )
+<p>servizio : {{$service->name}}</p>
+<p>Prezzo : {{$service ->price}} € </p>
 
-       
-       
-       <hr>
-   @endif
+
+<form action="{{route('anulla-app',  $prenotazione -> id)}}" method="POST">
+    @csrf
+    @method('post')
+    {{-- <div>
+        
+        <label for=""></label>
+        <input type="text">
+    </div> --}}
+    <button type="submit">
+        
+        ANNULLA APPUNTAMENTO
+    </button>
+</form>
+<hr>
+@endif
 @endforeach
 
-{{-- <p>data : {{$prenotazione -> date_end}}</p>
-<p>voto : {{$prenotazione -> review_vote}}</p>
-<p>recensione : {{$prenotazione -> review_text}}</p> 
-<hr> --}}
+@endif
 @endif
 @endif
 
@@ -131,11 +134,6 @@
        <hr>
    @endif
 @endforeach
-{{-- 
-<p>data : {{$prenotazione -> date_end}}</p>
-<p>voto : {{$prenotazione -> review_vote}}</p>
-<p>recensione : {{$prenotazione -> review_text}}</p> 
-<hr> --}}
 @endif
 @endif
 

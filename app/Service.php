@@ -19,7 +19,7 @@ class Service extends Model
         'delete'
     ];
     public function users(){
-        return $this ->belongsToMany(User::class)->withPivot('id','user_ID','service_ID', 'date_end', 'review_vote', 'review_text', 'deleted');
+        return $this ->belongsToMany(User::class)->withPivot('id','user_ID','service_ID', 'date_start', 'date_end', 'review_vote', 'review_text', 'deleted');
     }
     public function promotion(){
         return $this ->hasMany(Promotion::class);

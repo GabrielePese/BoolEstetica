@@ -45,6 +45,6 @@ use Illuminate\Notifications\Notifiable;
     ];
     
      public function services(){
-        return $this ->belongsToMany(Service::class)->withPivot('id','user_ID','service_ID', 'date_end', 'review_vote', 'review_text', 'deleted');
+        return $this ->belongsToMany(Service::class)->withPivot('id','user_ID','service_ID','date_start',  'date_end','review_vote', 'review_text', 'deleted');
      }
 }

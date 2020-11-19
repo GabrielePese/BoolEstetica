@@ -18,6 +18,16 @@
         <a href="{{route('prenota', $service -> id, )}}">PRENOTA IL TUO TRATTAMENTO ORA</a>
         <br>
         <br>
+
+    <ul>
+        <h2>RECENSIONI:</h2>
+        @foreach ($recensioni as $recensione)
+        <li>{{$recensione -> name}} ha scritto:
+            {{$recensione -> review_text}}</li><br>
+            Ha dato {{$recensione -> review_vote}} stelle su 10. 
+            <hr>
+        @endforeach
+    </ul>
         @auth
             
         @if (Auth::user() -> admin)
