@@ -32,6 +32,8 @@
     <input type="date" name="datagiorno" value="" >
 </div>
 
+
+
 <div>
     <label for="dataorario"> Seleziona Orario </label>
     <select name="dataorario" id="">
@@ -63,10 +65,14 @@
     <input type="number" name="user_ID" value="{{Auth::user()->id }}" >
     </div>
     
+
+  
+    
     <div>
         <label for="datagiorno"> Seleziona Giorno </label>
-        <input type="date" name="datagiorno" value="" >
+        <input id="ciao" class="date" type="date" name="datagiorno" value="" >
     </div>
+    
     
     <div>
         <label for="dataorario"> Seleziona Orario </label>

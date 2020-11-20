@@ -23,4 +23,6 @@ Route::post('/recensione-post/{id}', 'LoggedController@recensionepost')->name('r
 Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anulla-app');
 
 
-Route::get('/APIcalendar', 'LoggedController@APIcalendar')-> name ('APIcalendar');;
+Route::get('/APIcalendar', 'LoggedController@APIcalendar')-> name ('APIcalendar');
+
+Route::get('/APIcalendarioData', 'LoggedController@APIcalendarioData') -> name('APIcalendarioData');

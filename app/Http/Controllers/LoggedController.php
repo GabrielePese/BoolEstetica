@@ -215,6 +215,20 @@ class LoggedController extends Controller
         return redirect() -> route('home');
     }
 
+
+    public function APIcalendarioData(){
+        
+        $lista = [
+            ['titolo' => 'ciao'],
+            ["titolo" => "numerodue"]
+    ];
+
+
+   
+
+    return response()->json($lista);
+    }
+
     public function promo($id){
         $service = Service::findOrFail($id);
         $promotions = Promotion::all();
