@@ -109,8 +109,67 @@ class LoggedController extends Controller
 
     public function prenota($id){
         $servizio = Service::findOrFail($id);
+
+        $this->APIcalendar();
+
         $users = User::all();
+
         return view ('prenotazione' , compact('servizio', 'users'));
+    }
+
+    public function APIcalendar(){
+
+
+        $infoPerCalendario = [ ];
+          
+
+        $recensioni = DB::table('service_user')
+        ->join('users', 'service_user.user_ID', '=', 'users.id')
+        ->join('services', 'service_user.service_ID', '=', 'services.id')
+        -> where('deleted', '=' , 0 )
+        ->select( 'services.name as title','date_start', 'date_end','users.name', 'service_user.user_ID')
+        -> get();
+        ;
+        foreach($recensioni as $recensione){
+            $titolo_part1 = $recensione -> name;
+            $titolo_part2 = $recensione -> title;
+            $titolo_tot = $titolo_part1 . " " . $titolo_part2;
+           
+
+            if (Auth::user()->admin) {
+                $var = [
+                    'title' => $titolo_tot ,
+                    'start' => $recensione -> date_start ,
+                    'end'  => $recensione -> date_end,
+                    'color' => 'grey'
+                ];
+                array_push($infoPerCalendario,$var);
+            }
+            elseif (Auth::user()->id == $recensione -> user_ID) {
+                $var = [
+                    'title' => $titolo_tot ,
+                    'start' => $recensione -> date_start ,
+                    'end'  => $recensione -> date_end,
+                    'color' => 'green'
+                ];
+               
+                array_push($infoPerCalendario,$var);
+            } 
+            else {
+                $var = [
+                    'start' => $recensione -> date_start ,
+                    'end'  => $recensione -> date_end,
+                    'color' => 'blu'
+                ];
+               
+                array_push($infoPerCalendario,$var);
+            }
+            
+    
+        };
+
+        
+        return response()->json($infoPerCalendario);
     }
     
 

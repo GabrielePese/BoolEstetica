@@ -18,9 +18,9 @@ Benvenuto {{Auth::user()-> name}}
 @endauth
 
 
-<div id='calendar'></div>
 
 
+  
 <br>
 <h1>I NOSTRI TRATTAMENTI</h1>
 <ul>
@@ -33,7 +33,8 @@ Benvenuto {{Auth::user()-> name}}
     </a>
     @endif
     @endforeach
-
+    
+   
 
 
 @endsection

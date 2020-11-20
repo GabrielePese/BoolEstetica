@@ -1,8 +1,11 @@
 @extends('layouts.main-layout')
 
 @section('content')
+<script src="{{asset('js/calendar.js')}}"></script>
 @auth
 @if (Auth::user()->admin)
+
+<div id="calendar"></div>
 
 <form action="{{route('prenota-post', $servizio -> id)}}" method="post"> 
     @csrf
@@ -49,7 +52,7 @@
 </form>
 
 @else
-
+<div id="calendaruser"></div>
     <form action="{{route('prenota-post', $servizio -> id)}}" method="post"> 
         @csrf
         @method('post')

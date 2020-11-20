@@ -23,6 +23,7 @@ function init(){
   //   calendar.render();
   // });
 
+//  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
 
 
 

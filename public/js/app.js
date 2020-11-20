@@ -49547,7 +49547,7 @@ function init() {
   //   });
   //   calendar.render();
   // });
-  console.log('provaaaa');
+  //  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
   $('[data-mirror]').on('change keyup paste', function () {
     $('[data-mirror]').val(this.value);
   });
@@ -49618,8 +49618,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\flavi\Desktop\Estetica2\BoolEstetica\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\Estetica2\BoolEstetica\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Gabriele\Desktop\Boolean\BoolEstetica\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Gabriele\Desktop\Boolean\BoolEstetica\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
