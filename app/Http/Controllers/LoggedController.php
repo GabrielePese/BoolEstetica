@@ -110,14 +110,14 @@ class LoggedController extends Controller
     public function prenota($id){
         $servizio = Service::findOrFail($id);
 
-        $this->APIcalendar();
+        $this->apiCalendar();
 
         $users = User::all();
 
         return view ('prenotazione' , compact('servizio', 'users'));
     }
 
-    public function APIcalendar(){
+    public function apiCalendar(){
 
 
         $infoPerCalendario = [ ];
@@ -216,7 +216,14 @@ class LoggedController extends Controller
     }
 
 
-    public function APIcalendarioData(){
+    public function apiCalendarioData($valoreinput){
+
+        // dd($valoreinput);
+
+
+        $dev = DB::table('service_user')
+        ->whereDate('date_start', $valoreinput)
+        ->get();
         
         $lista = [
             ['titolo' => 'ciao'],
@@ -226,7 +233,7 @@ class LoggedController extends Controller
 
    
 
-    return response()->json($lista);
+    return response()->json($dev);
     }
 
     public function promo($id){
