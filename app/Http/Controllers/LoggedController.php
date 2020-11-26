@@ -222,16 +222,12 @@ class LoggedController extends Controller
 
 
         $dev = DB::table('service_user')
+        ->join('services', 'service_user.service_ID', '=', 'services.id')
+        ->select('services.id', 'date_start', 'date_end','services.duration','service_user.user_ID' )
         ->whereDate('date_start', $valoreinput)
         ->get();
-        
-        $lista = [
-            ['titolo' => 'ciao'],
-            ["titolo" => "numerodue"]
-    ];
 
-
-   
+       
 
     return response()->json($dev);
     }

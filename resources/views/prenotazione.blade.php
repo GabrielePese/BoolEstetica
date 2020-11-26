@@ -95,6 +95,7 @@
     <div>
         <label for="dataorario"> Seleziona Orario </label>
         <select name="dataorario" id="selectReservation">
+        <option value="" disabled selected>Select your option</option>
             
         </select>
     </div>
@@ -105,7 +106,7 @@
     </div>
     
        
-    <Button type="submit"> AGGIUNGI APPUNTAMENTO</Button>
+    <Button id="reservation-btn" class="invisible" type="submit"> AGGIUNGI APPUNTAMENTO</Button>
     </form>
 
 @endif
