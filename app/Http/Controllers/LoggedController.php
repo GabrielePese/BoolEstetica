@@ -108,13 +108,53 @@ class LoggedController extends Controller
 
 
     public function prenota($id){
+        
         $servizio = Service::findOrFail($id);
-
         $this->APIcalendar();
-
         $users = User::all();
 
+        
+   
+        
+        
         return view ('prenotazione' , compact('servizio', 'users'));
+    }
+
+    public function controlloData($id){
+        
+        $servizio = Service::findOrFail($id);
+        $this->APIcalendar();
+        $users = User::all();
+        $cookie = $_COOKIE['data'];
+        $array = explode('-' , $cookie);
+
+        $anno = $array[0];
+        $mese = $array[1];
+        $giorno = $array[2];
+       
+        $date = DB::table('service_user')->select('date_start')->whereYear('date_start', '=', $anno)->whereMonth('date_start', '=', $mese)->whereDay('date_start', '=', $giorno)-> get();  
+        
+        $orarigiorno = [
+            $cookie .' '. '8.00',
+            $cookie .' '. '8.30',
+            $cookie .' '. '9.00',
+            $cookie .' '. '9.30',
+            $cookie .' '. '10.00',
+            $cookie .' '. '10.30'
+            ];
+
+            foreach ($date as $data) {
+                $risultato = array_diff($orarigiorno, $data -> date_start);
+                
+            }
+            dd($risultato);
+
+
+            $risultato = array_diff($orarigiorno, $date -> date_start);
+            dd($risultato);
+
+            
+        return view ('prenotazionedue' , compact('servizio', 'users','date', 'id'));
     }
 
     public function APIcalendar(){

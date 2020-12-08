@@ -1,7 +1,9 @@
 @extends('layouts.main-layout')
 
 @section('content')
-
+<script>
+    document.cookie = `data = ${0};path = /`
+</script>
 
 <h1>{{$service -> name}}</h1>
 {{$service -> name}}

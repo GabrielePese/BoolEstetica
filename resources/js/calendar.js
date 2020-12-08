@@ -9,7 +9,7 @@ window.$ = require('jquery');
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
+      initialView: 'timeGridWeek',
       events: '/APIcalendar'
     });
     calendar.render();
@@ -19,7 +19,7 @@ window.$ = require('jquery');
   document.addEventListener('DOMContentLoaded', function() {
     var calendaruserEl = document.getElementById('calendaruser');
     var calendaruser = new FullCalendar.Calendar(calendaruserEl, {
-      initialView: 'dayGridMonth',
+      initialView: 'timeGridWeek',
       selectable: true,
       events: '/APIcalendar',
       // eventClick: function(info) {
@@ -35,7 +35,7 @@ window.$ = require('jquery');
   });
 
   function init() {
-
+    
     prendiGiorno();
     
 }
@@ -43,6 +43,11 @@ window.$ = require('jquery');
 function prendiGiorno(){
   $('#ciao').on("change",function(){
     var valoreinput = $(this).val();
+
+ 
+    document.cookie = `data = ${valoreinput}; path = /`
+    
+  
     console.log(valoreinput);
   });
 }

@@ -13,6 +13,7 @@ Route::get('/show-tratt/{id}', 'HomeController@showTratt')->name('show-tratt');
 Route::get('/create-tratt', 'LoggedController@createTratt')->name('create-tratt');
 Route::post('/store-tratt', 'LoggedController@storeTratt')->name('store-tratt');
 Route::get('/prenota/{id}', 'LoggedController@prenota')->name('prenota');
+Route::get('/controllodata/{id}', 'LoggedController@controlloData')->name('controlloData');
 Route::post('/prenotastore/{id}', 'LoggedController@prenotastore')->name('prenota-post');
 Route::get('/promo/{id}', 'LoggedController@promo')->name('promo');
 Route::post('/aggiungipromo/{id}' , 'LoggedController@aggiungipromo')->name('aggiungipromo');
@@ -25,4 +26,4 @@ Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anu
 
 Route::get('/APIcalendar', 'LoggedController@APIcalendar')-> name ('APIcalendar');
 
-Route::get('/APIcalendarioData', 'LoggedController@APIcalendarioData') -> name('APIcalendarioData');
+// Route::get('/APIcalendarioData', 'LoggedController@APIcalendarioData') -> name('APIcalendarioData');

@@ -82,11 +82,9 @@
     <div>
         <label for="dataorario"> Seleziona Orario </label>
         <select name="dataorario" id="">
-           
-            <option value="8:00">8:00</option>
-            <option value="8:30">8:30</option>
-            <option value="9:00">9:00</option>
-            <option value="9:30">9:30</option>
+            @foreach ($date as $data)
+                <option value="{{$data -> date_start}}">{{$data -> date_start}}</option>
+            @endforeach
         </select>
     </div>
     

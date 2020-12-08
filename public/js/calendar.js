@@ -10982,7 +10982,7 @@ console.log('prima');
 document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
     events: '/APIcalendar'
   });
   calendar.render();
@@ -10990,7 +10990,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var calendaruserEl = document.getElementById('calendaruser');
   var calendaruser = new FullCalendar.Calendar(calendaruserEl, {
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
     selectable: true,
     events: '/APIcalendar' // eventClick: function(info) {
     //   alert('Event: ' + info.event.title);
@@ -11009,6 +11009,7 @@ function init() {
 function prendiGiorno() {
   $('#ciao').on("change", function () {
     var valoreinput = $(this).val();
+    document.cookie = "data = ".concat(valoreinput, "; path = /");
     console.log(valoreinput);
   });
 } //     $.ajax({

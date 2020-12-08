@@ -9,7 +9,7 @@ window.$ = require('jquery');
 $(document).ready(init);
 
 function init(){
-
+  
   // import { Calendar } from '@fullcalendar/core';
   // import dayGridPlugin from '@fullcalendar/daygrid';
   
