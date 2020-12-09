@@ -129,20 +129,24 @@ class LoggedController extends Controller
         -> where('deleted', '=' , 0 )
         ->select( 'services.name as title','date_start', 'date_end','users.name', 'service_user.user_ID')
         -> get();
-        ;
+        
         foreach($recensioni as $recensione){
+
             $titolo_part1 = $recensione -> name;
             $titolo_part2 = $recensione -> title;
             $titolo_tot = $titolo_part1 . " " . $titolo_part2;
-           
-
+            
+            
             if (Auth::user()->admin) {
+               
                 $var = [
-                    'title' => $titolo_tot ,
+                    'title'=> $recensione -> name,
                     'start' => $recensione -> date_start ,
                     'end'  => $recensione -> date_end,
                     'color' => 'grey'
                 ];
+                
+                
                 array_push($infoPerCalendario,$var);
             }
             elseif (Auth::user()->id == $recensione -> user_ID) {
@@ -222,9 +226,10 @@ class LoggedController extends Controller
 
 
         $dev = DB::table('service_user')
-        ->join('services', 'service_user.service_ID', '=', 'services.id')
-        ->select('services.id', 'date_start', 'date_end','services.duration','service_user.user_ID' )
-        ->whereDate('date_start', $valoreinput)
+        ->join('services', 'service_user.service_ID', '=', 'services.id')  // prendi dati anche da services dove il service_ID di service_user é uguale al service.id
+        ->select('services.id', 'date_start', 'date_end','services.duration','service_user.user_ID', 'service_user.deleted') //prendi questi dati
+        ->where('service_user.deleted' , '=', '0') //prendi solo dove service users deleted é 0
+        ->whereDate('date_start', $valoreinput) //dove date_start e'uguale e valore input che ti passiamo noi
         ->get();
 
        

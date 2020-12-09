@@ -6,8 +6,10 @@ window.$ = require('jquery');
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      events: '/apiCalendar'
+
+      
+      initialView: 'timeGridWeek',
+       events: '/apiCalendar'
     });
     calendar.render();
   });
@@ -17,25 +19,14 @@ window.$ = require('jquery');
     var calendaruserEl = document.getElementById('calendaruser');
     var calendaruser = new FullCalendar.Calendar(calendaruserEl, {
       themeSystem: 'bootstrap',
-      initialView: 'dayGridMonth',
+      
+      initialView: 'timeGridWeek',
       selectable: true,
       events: '/apiCalendar',
-
-
       
 
-
-
-
-      // eventClick: function(info) {
-      //   alert('Event: ' + info.event.title);
-        
-        
-      //   // change the border color just for fun
-      //   info.el.style.borderColor = 'red';
-       
-      // }
     });
+    console.log(calendaruser);
     calendaruser.render();
   });
   
@@ -67,37 +58,37 @@ window.$ = require('jquery');
  //--------------------------------------------------------------------------------------------------------------------------------
 
   function printArray(optionArray, serviceType){
-
+    console.log(optionArray);
     
-    
-    $('#selectReservation').append(`'<option value="" disabled selected>Select your option</option>'`);   
 
-    $('#selectReservation').find('option').remove();   
+ 
+   $('#selectReservation').find('option').remove();  // ogni volta che cambio lui mi cancella tutte le vecchie option (compreso "select yourt option") => senza ogni volta che cambio giorno lui mi mostra gli orari vecchie e quelli nuovi..
 
-    
+
+  
 
     for (let index = 0; index < optionArray.length; index++) {   
       
       console.log("OPZIONE ARRAY",optionArray);
 
       
-      if (serviceType == 1 || serviceType == 2 || serviceType == 3 ) 
+      if (serviceType == 1 || serviceType == 2 || serviceType == 3 ) // se servizio dura 1 ora
       {          
-          if (optionArray[index] !== "12:30" && optionArray[index] !== "13:00" && optionArray[index] !== "13:30" )  // escludo orari della PAUSA per servizi 60min
+          if (optionArray[index] !== "12:30" && optionArray[index] !== "13:00" && optionArray[index] !== "13:30" )  // se e'diverso da 12.30 13 13.30.. escludo orari della PAUSA.La Pausa e' dalle 13 alle 14 per servizi 60min
           {
-            $('#selectReservation').append(`'<option value="${optionArray[index]}">${optionArray[index]}</option>'`);       
+            $('#selectReservation').append(`'<option value="${optionArray[index]}">${optionArray[index]}</option>'`);    // qui gli dico di stampare gli orari disponibili.    
           }       
         }   
         else if (serviceType == 4) 
         {          
-          if (optionArray[index] !== "13:00" && optionArray[index] !== "13:30" )  // escludo orari della PAUSA per servizi 30 min
+          if (optionArray[index] !== "13:00" && optionArray[index] !== "13:30" )  // escludo orari della PAUSA per servizi 30 min, quindi posso prenotare dalle 12.30 alle 13 poi dalle 14 in poi. 
           {       
             $('#selectReservation').append(`'<option value="${optionArray[index]}">${optionArray[index]}</option>'`);    
           }   
         }                
     }
 
-    $('#reservation-btn').removeClass('invisible');
+    $('#reservation-btn').removeClass('invisible'); // rendo visibile il bottono di prenotazione.
 
   }
 
@@ -108,19 +99,19 @@ window.$ = require('jquery');
 
   console.log("entro nella funzione con", unbookedHours );
 
-  let arrayOptionToPrint = [];
+  let arrayOptionToPrint = []; // questo all'inizio e'vuoto e saranno le ore che mi appariranno disponibili nella gioranta selezionata
 
       for (let index = 0; index < unbookedHours.length; index++) {
 
-        var deltaMinutes = moment(unbookedHours[index][1], "kk:mm").diff(moment(unbookedHours[index][0], "kk:mm"), 'minutes');
+        var deltaMinutes = moment(unbookedHours[index][1], "kk:mm").diff(moment(unbookedHours[index][0], "kk:mm"), 'minutes');  //faccio differenza tra il secondo e il primo appuntamento e mi calcoli i minuti. es ho buco dalle 11 alle 9. Ho 2 ore cioe' 120 minuti.
         console.log("Minuti ancora non prenotati: ", deltaMinutes);
 
-            if(deltaMinutes>=60)
+            if(deltaMinutes>=60) 
             {
 
-                    for (let count = 0; count < (deltaMinutes/ 30)-1; count++) {
+                    for (let count = 0; count < (deltaMinutes/ 30)-1; count++) {  // ciclo per minuti /30 e tolgo uno. es 9-11 ho buco. quindi 120 minuti. lui qui mi dice 9 puoi prenotare, 9.30 puoi prenotare, 10 puoi prenotare, 10.30 grazie al -1 me lo toglie.
 
-                      let step =  moment(unbookedHours[index][0],'kk:mm').add(30*count,'minutes').format('kk:mm');
+                      let step =  moment(unbookedHours[index][0],'kk:mm').add(30*count,'minutes').format('kk:mm'); //aggiungo 30 minuti alla unbookedHours[index][0] che nel mio caso '9. al primo giro agigungo 0 poi 30 min poi 60 e poi 90.
                       arrayOptionToPrint.push(step);           
                     }
             }        
@@ -136,17 +127,17 @@ window.$ = require('jquery');
 
   console.log("entro nella funzione con", unbookedHours );
 
-  let arrayOptionToPrint = [];
+  let arrayOptionToPrint = [];  // qui funziona come nel 60 
 
       for (let index = 0; index < unbookedHours.length; index++) {
 
         var deltaMinutes = moment(unbookedHours[index][1], "kk:mm").diff(moment(unbookedHours[index][0], "kk:mm"), 'minutes');
         console.log("Minuti ancora non prenotati: ", deltaMinutes);
 
-            if(deltaMinutes>=30)
+            if(deltaMinutes>=30) //differenza qui che controlla 30 minuti
             {
 
-                    for (let count = 0; count < (deltaMinutes/ 30); count++) {
+                    for (let count = 0; count < (deltaMinutes/ 30); count++) {  //nel ciclo ho tolto il -1 perche'qui i 30 min mi servono
 
                       let step =  moment(unbookedHours[index][0],'kk:mm').add(30*count,'minutes').format('kk:mm');
                       arrayOptionToPrint.push(step);           
@@ -162,61 +153,66 @@ window.$ = require('jquery');
  //--------------------------------------------------------------------------------------------------------------------------------
  function notBookedHours(data, orarioAperturaMoment, orarioChiusuraMoment, ultimoAppuntamento30Moment, ultimoAppuntamento60Moment){
 
-  console.log("CREAARRAYFINEINZIO CON DATI:", data);            
+  console.log("CREA ARRAY FINE INZIO CON DATI:", data);            
             
             var start = [];
             var end = [];    
-            // unico array con data inizio e data fine 
-            var arrayEndStart = [];
+            
+            var arrayEndStart = [];  // unico array con data inizio e data fine
 
             
             for (let index = 0; index < data.length; index++) {
-              var momentStart = moment(data[index].date_start).format("kk:mm");
-              var momentEnd = moment(data[index].date_end).format("kk:mm");              
+              var momentStart = moment(data[index].date_start).format("kk:mm"); // prendi dalla chiamata ajax prendo orario inizio(data-start) dell'orario trovato
+              var momentEnd = moment(data[index].date_end).format("kk:mm");      // prendi dalla chiamata ajax prendo orario fine(data-end) dell'orario trovato        
               start.push(momentStart);     
               end.push (momentEnd); 
             }
 
-           // creo due array , uno rappresenta le date inizio servizio, l'altro la data di termine servizio
+           // creo due array , uno rappresenta le date inizio servizio, l'altro la data di termine servizio e li metto in ordine
             var findedStartDate = start.sort();           
             var findedEndDate = end.sort();     
             
             console.log("ARRAY ORDINATI", findedStartDate, findedEndDate);           
             
 
-            for (let k = 0; k <= data.length-1; k++) {
+            for (let k = 0; k <= data.length-1; k++) { // faccio -1 sennó eco dall'array
 
-              if (k==0 && findedStartDate[0] !== orarioAperturaMoment)
+              if (k==0 ) //se al primo giro valore trovato e'diverso dall'orario apertura (8.00)
               { 
                   //creo array per una sola prenotazione aggiungendo 8:00 e 19:00
-                  var i = findedStartDate[1] ? findedStartDate[1] : orarioChiusuraMoment;
+                  var i = findedStartDate[1] ? findedStartDate[1] : orarioChiusuraMoment; // se esiste nell'array delle date iniziali esiste almeno un elemento, dammi l'elemento sennó dammi orario chiusura.un'altra oltre la 0 me la segni come seconda prenotazione, sennó me la sostituisci con orario chiusura.
                   console.log("vari", i);
-                  let newelem = [ orarioAperturaMoment, findedStartDate[0] ]; 
-                  let newend = [ findedEndDate[0], i ];
-                  arrayEndStart.push(newelem); 
-
-                        if(newend[0] !== newend[1])
-                        {
-                            arrayEndStart.push(newend); 
-                        }                                
+                  if (findedStartDate[0] !== orarioAperturaMoment) {
+                    
+                    let newelem = [ orarioAperturaMoment, findedStartDate[0] ]; //nell'array metti orario apertura e l'orario di inizio del primo appuntamento della giornata.
+                    console.log('DIVERSO ORARIO APERTURA', newelem);
+                    arrayEndStart.push(newelem); 
+                  }
+                  else{
+                    let newelem = [ findedEndDate[0], i ];
+                    console.log('UGUALE ORARIO APERTURA QUINDI ALLE 8', newelem);
+                    arrayEndStart.push(newelem); 
+                  }
+                               
               } 
-              else if(k!==0 && k < data.length-1 )
+              else if(k!==0 && k < data.length-1 ) // dopo un ciclo 
               {
 
-                    //se la data finale dell'esimo servizio è differente dalla data iniziale del servizio successivo                    
+                                       
 
-                    if(findedEndDate[k] !== findedStartDate[k+1] ) {
+                    if(findedEndDate[k] !== findedStartDate[k+1] ) {     //se la data finale dell'esimo servizio è differente dalla data iniziale del servizio successivo
                     let newelem = [findedEndDate[k],findedStartDate[k+1] ]; 
-                    arrayEndStart.push(newelem);    
+                    arrayEndStart.push(newelem); 
+                    
                     } 
 
                 
               } 
-              else if (k == data.length-1) 
+              else if (k == data.length-1) // k é all'ultimo ciclo.
               {
 
-                    if(findedStartDate[k] !== ultimoAppuntamento60Moment) { //18:00
-                    let newelem = [findedEndDate[k], orarioChiusuraMoment ]; //15:00 - 19:00
+                    if(findedStartDate[k] !== ultimoAppuntamento60Moment) { //18:00  data inizio é diversa dallúltimo appuntamento da 60 min
+                    let newelem = [findedEndDate[k], orarioChiusuraMoment ]; //15:00 - 19:00  
                     arrayEndStart.push(newelem);     
 
                     }
@@ -250,25 +246,32 @@ function manipolaDatiCalendario(data){
   var ultimoAppuntamento60Moment = moment(ultimoAppuntamento60, 'hh').format('kk:mm');
 
   // prendo il tipo di servizio e quindi la sua durata: 
-    var pathArray = window.location.pathname.split('/');
-    var servizio = pathArray[2];
+    var pathArray = window.location.pathname.split('/'); // prendi url pagina e la dividi ad ogni /
+    var servizio = pathArray[2]; // prendi la posizione 2 dellárray creato, quindi prendi il numero in fondo all'URL.
 
       
     // se non c'è nessuna prenotazione---------STAMPERA' (da fare) TUTTE LE OPTION NELLA SELECT
         if(data.length==0)
         {
 
-            let arrayTotalBooking=[orarioAperturaMoment];
+            // let arrayTotalBooking=[orariAperturaMoment]; //crei array con giá dentro orario di apertura (8.00) sennó  lui parte da 8.30
+            let arrayTotalBooking=[];
+            
 
-            for (let index = 0; index < (orarioChiusura-orarioApertura)*2; index++) {
+            for (let index = 0; index < (orarioChiusura-orarioApertura)*2; index++) {  // ciclo per le ore di aperte ( da orariochiusura - orario apertura) per ogni 30 minuti con il * 2
 
-                let step =  moment(orarioAperturaMoment,'kk:mm').add(30*index,'minutes').format('kk:mm');
-                arrayTotalBooking.push(step);              
-                }
+                let step =  moment(orarioAperturaMoment,'kk:mm').add(30*index,'minutes').format('kk:mm'); // aggiungo 30 minuti per ogni volta.. quindi avro step = 8.00 poi step = 8.30 step = 9.00 ecc..
+                arrayTotalBooking.push(step);      // pusho nell'array
+                
+              }
+              
 
-                  if ( servizio == 1 || servizio == 2 || servizio == 3 )
+              
+                 
+
+                  if ( servizio == 1 || servizio == 2 || servizio == 3 )  // se servizio dura 60 minuti => qui aggiungo tutti i servizi con duration 60 min
                   {
-                    let arrayTotalBookingSliced = arrayTotalBooking.slice(1,-1);                    
+                    let arrayTotalBookingSliced = arrayTotalBooking.slice(0, -1); // slice toglie i valori che gli indichi dall'array. all'inzio non tolgo nulla e alla fine faccio -1, quindi lui mi toglie 18.30.              
                     printArray(arrayTotalBookingSliced, servizio);
                   }    
         
@@ -283,7 +286,7 @@ function manipolaDatiCalendario(data){
         } 
         else if (data.length >= 1 ) 
         {
-                var unbookedHours = notBookedHours(data, orarioAperturaMoment, orarioChiusuraMoment,ultimoAppuntamento30Moment, ultimoAppuntamento60Moment);
+                var unbookedHours = notBookedHours(data, orarioAperturaMoment, orarioChiusuraMoment,ultimoAppuntamento30Moment, ultimoAppuntamento60Moment);  // qui recupero le ore e mezzore libere
                 console.log("UNBOOKED HOURS: ", unbookedHours);             
               
               if ( servizio == 1 || servizio == 2 || servizio == 3 )
@@ -299,6 +302,7 @@ function manipolaDatiCalendario(data){
               }   
 
         }// FINE CICLO ELSE IF DATA LENGTH >= 1
+         
 }
 
 
