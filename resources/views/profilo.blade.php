@@ -4,12 +4,15 @@
 
 @auth
     @if(Auth::user()->admin)
-        Benvenuto Amministratore.
+        <p style="margin-bottom:5px;"> Benvenuto Amministratore </p>
         <br>
 
-        <a href="{{ route('create-tratt') }}">INSERISCI NUOVO TRATTAMENTO</a>
+        <a class="btn btn-primary" style="margin-bottom:10px;" href="{{ route('statistiche') }}">VISUALIZZA STATISTICHE</a>
         <br>
-        <a href="{{ route('create-promo') }}">INSERISCI NUOVA PROMOZIONE</a>
+
+        <a class="btn btn-dark " style="margin-bottom:10px;" href="{{ route('create-tratt') }}">INSERISCI NUOVO TRATTAMENTO</a>
+        <br>
+        <a class="btn btn-warning" style="margin-bottom:10px;" href="{{ route('create-promo') }}">INSERISCI NUOVA PROMOZIONE</a>
 
 
         <H2>Elenco prenotazioni</H2>
@@ -18,7 +21,7 @@
             <H1>DA FARE</H1>
   
                 
-   @foreach ($prenotazioni as $item => $prenotazione)
+   @foreach ($prenotazioniNuovo as $item => $prenotazione)
    @if ($date_now -> lt($prenotazione -> date_end)) {{--se la data attuale lt= é piú piccola della data di fine della prenotazione inseriscilo qui--}}
        @foreach ($users as $user)
            @if ($user-> id ==$prenotazione -> user_ID ) {{--se l'id del user su cui cicla é uguale all'user_Id della tabella ponte --}}
@@ -40,7 +43,7 @@
         </div>
         <div class="col-xs-6 " style="">
             <H1>GIA'FATTI</H1>
-   @foreach ($prenotazioni as $item => $prenotazione)
+   @foreach ($prenotazioniNuovo as $item => $prenotazione)
    @if ($date_now -> gt($prenotazione -> date_end))
        @foreach ($users as $user)
            @if ($user-> id ==$prenotazione -> user_ID )
@@ -69,7 +72,7 @@
    
    <div class="col-xs-6 " style="">
     <H1>DA FARE</H1>
-@foreach ($prenotazioni as $item => $prenotazione)
+@foreach ($prenotazioniNuovo as $item => $prenotazione)
 @if ($prenotazione-> user_ID == Auth::user()->id) {{-- qui gli dico se ID della tabella ponte e'uguale all'id dell'utente autenticato. quindi di mostrarmi solo le prenotazioni dell'utente autenticato. --}}
 @if ($prenotazione -> deleted)
 @else    
@@ -111,7 +114,7 @@
 </div>
 <div class="col-xs-6 " style="">
     <H1>GIA'FATTI</H1>
-@foreach ($prenotazioni as $item => $prenotazione)
+@foreach ($prenotazioniNuovo as $item => $prenotazione)
 @if ($prenotazione-> user_ID == Auth::user()->id)
 @if ($date_now -> gt($prenotazione -> date_end))
 @foreach ($users as $user)

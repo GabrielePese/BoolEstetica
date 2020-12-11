@@ -13,15 +13,14 @@
  
 <div>
     Seleziona il cliente :
-    <select name="cliente" id="">
+    <select name="user_ID" id=""> {{--  qui in name abbiamo messo user_ID cosi nel controller salviamo data[user_ID] --}}
         @foreach ($users as $user)
-      
-        <option value="{{$user -> id}}">{{$user-> name}}</option>
 
         
-        
-        @endforeach      
-    </select>
+        <option value="{{$user -> id}}">{{$user -> name }}</option>
+            
+       
+        @endforeach
 </div>
 
 

@@ -307,10 +307,12 @@ function manipolaDatiCalendario(data){
 
 
 
+
+
 function init() {
 
   prendiGiorno();
-  
+
 }
 
 

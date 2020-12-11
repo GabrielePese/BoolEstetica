@@ -26,3 +26,8 @@ Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anu
 Route::get('/apiCalendar', 'LoggedController@apiCalendar')-> name ('apiCalendar');
 
 Route::get('/apiCalendarioData/{valoreinput}', 'LoggedController@apiCalendarioData') -> name('APIcalendarioData');
+
+
+Route::get('/statistiche', 'LoggedController@statistiche')-> name ('statistiche');
+Route::get('/apiStatistiche/{idUtenteSelezionato}', 'LoggedController@apiStatistiche') -> name('apiStatistiche');
+Route::get('/apiFatturatoMeseChart', 'LoggedController@fatturatoMeseChart') -> name('fatturatoMeseChart');

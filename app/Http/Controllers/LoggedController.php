@@ -39,10 +39,24 @@ class LoggedController extends Controller
         $date_now = Carbon::parse($ora); //permette a carbon di leggere orario
         $date_now -> addHours(1); //aggiungo alla data un ora perche'lui prende la data di Londra quindi con un ora in meno
         
-        $prenotazioni = $userUtente-> services->first()->pivot->get();  // prendo il contenuto nella tabella ponte UserService. 
-               
+        $prenotazioni = $userUtente-> services->first();  // prendo il contenuto nella tabella ponte UserService. 
+        if($prenotazioni){
+            $prenotazioniNuovo = $userUtente-> services->first()->pivot->get();
+        }
+        else {
+            return view ('paginaNOdati');
+        }
+
         
-        return view('profilo', compact('prenotazioni', 'users','userUtente', 'services', 'date_now'));  
+        // $prenotazione = DB::table('service_user')
+        // ->where('user.id' , '=' , $userUtente )
+        // ->get();
+
+        
+        
+      
+        
+        return view('profilo', compact('prenotazioniNuovo', 'users','userUtente', 'services', 'date_now'));  
     }
 
     public function scrivirecensione($id){
@@ -178,16 +192,20 @@ class LoggedController extends Controller
     
 
     public function prenotastore(Request $request, $id){
-        $data = $request -> all();
+
+       $data = $request -> all();
+       
         $dataorario = $data['dataorario'];
         $datagiorno =$data['datagiorno'];
+        $user_id = $data['user_ID'];
         
-
+        // dd($data);
         $servizio = Service::findOrFail($id);
         $utenteID = Auth::user()-> id;
-        $utente = User::findOrFail($utenteID);
+        // $utente = User::findOrFail($utenteID);
+        $utente = User::findOrFail($user_id);
         
-        $durate = $servizio['duration']; //qui prendo la duration di servizio, cioe'il mio service che ho selezionato in questo momento.
+        $durate = $servizio['duration']; //qui prendo la duration di servizio, cioe'il mio service che ho selezionato in questo 
 
         $del =$data['deleted'];
         
@@ -306,5 +324,79 @@ class LoggedController extends Controller
 
 
         return redirect() -> route('home');
+    }
+
+    public function statistiche (){
+        $utenti = User::all();
+
+        $annoAttuale = Carbon::now()->format('Y');
+
+        $fatturato = DB::table('service_user')
+        ->join('services', 'service_user.service_ID', '=', 'services.id' )
+        ->select('services.price')
+        ->where('service_user.deleted' , '=', '0')
+        ->whereYear('date_start', $annoAttuale)
+        ->sum('services.price');
+
+        $fatturatoMese = DB::table('service_user')
+        ->join('services', 'service_user.service_ID', '=', 'services.id' )
+        ->select(DB::raw('YEAR(date_start) year, MONTH(date_start) month'), DB::raw('count(*) as totale_servizi_del_mese'), DB::raw('SUM(services.price) as somma'))
+        ->where('service_user.deleted' , '=', '0')
+        ->whereYear('date_start', $annoAttuale)
+        ->groupby('year','month')
+        ->get();
+
+    
+
+        $serviziTotaliAnno = DB::table('service_user')
+        ->join('services', 'service_user.service_ID', '=', 'services.id' )
+        ->where('service_user.deleted' , '=', '0')
+        ->whereYear('date_start', $annoAttuale)
+        ->count();
+
+        
+        $serviziInPercentuale = DB::table('service_user')
+        ->join('services', 'service_user.service_ID', '=', 'services.id' )
+        ->select(DB::raw('count(*) as totale_servizi_fatti, services.id'), 'services.name')
+        ->where('service_user.deleted' , '=', '0')
+        ->whereYear('date_start', $annoAttuale)
+        ->groupBy('services.id')
+        ->get();
+
+        
+       
+    
+        return view('statistiche', compact ('utenti', 'fatturato', 'annoAttuale', 'serviziInPercentuale', 'serviziTotaliAnno', 'fatturatoMese'));
+    }
+    public function fatturatoMeseChart(){
+
+        $annoAttuale = Carbon::now()->format('Y');
+
+        $fatturatoMese = DB::table('service_user')
+        ->join('services', 'service_user.service_ID', '=', 'services.id' )
+        ->select(DB::raw('YEAR(date_start) year, MONTH(date_start) month'), DB::raw('count(*) as totale_servizi_del_mese'), DB::raw('SUM(services.price) as somma'))
+        ->where('service_user.deleted' , '=', '0')
+        ->whereYear('date_start', $annoAttuale)
+        ->groupby('year','month')
+        ->get();
+
+  
+    return response()->json($fatturatoMese);
+}
+
+    public function apiStatistiche($idUtenteSelezionato){
+        $annoAttuale = Carbon::now()->format('Y');
+
+        $statisticheSingoloCliente = DB::table('service_user')
+        ->join('users', 'service_user.user_ID', '=', 'users.id' )
+        ->join('services', 'service_user.service_ID', '=', 'services.id')
+        // ->select('users.name', 'users.id','service_user.service_ID')
+        ->select('users.name as cliente',(DB::raw('services.name as nome_Servizio, count(*) as prenotatazioni')))
+        ->whereYear('date_start', $annoAttuale)
+        ->where('users.id', '=' , $idUtenteSelezionato)
+        ->groupBy('users.name', 'services.name' )
+        ->get();
+
+        return response()->json($statisticheSingoloCliente); //questo é il data che avra di risposta il AJAX
     }
 }
