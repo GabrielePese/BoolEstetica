@@ -49576,7 +49576,7 @@ function createArray(data) {
 }
 
 function statistic(label, datas) {
-  removeAllCharts();
+  removeAllChart();
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'pie',
@@ -49595,35 +49595,54 @@ function statistic(label, datas) {
 
 function createArrayDati(datifatturamese) {
   var mesi = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  var quantitaServizi = [];
+  console.log("ARRAY DI MESI NON MODIFICATI", mesi);
+  var objectLength = Object.keys(datifatturamese).length;
+  console.log(objectLength);
 
-  for (var index = 0; index < datifatturamese.length; index++) {
-    var x = mesi[index];
-    x.push(datifatturamese[index]['month']);
-    quantitaServizi.push(datifatturamese[index]['totale_servizi_del_mese']);
+  for (var i = 0; i < objectLength; i++) {
+    var oggetto = Object.values(datifatturamese)[i];
+    var mesiInNumero = oggetto['month'];
+    var datiPrenotazione = oggetto['totale_servizi_del_mese'];
+    var index = mesiInNumero - 1;
+    mesi[index] = datiPrenotazione;
   }
 
-  statistics(mesi, quantitaServizi);
+  console.log("ARRAY DI MESI MODIFICATI--------------------------", mesi);
+  statistics(mesi);
   console.log(mesi);
-  console.log(quantitaServizi);
 }
 
-function statistics(mesi, quantitaServizi) {
+function statistics(mesi) {
   removeAllCharts();
   var ctx = document.getElementById('myCharts').getContext('2d');
   var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'bar',
     data: {
-      labels: mesi,
+      labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
       datasets: [{
-        label: '# of Votes',
-        data: quantitaServizi,
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+        label: 'Numero Servizi',
+        data: mesi,
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
         borderWidth: 1
       }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1,
+            beginAtZero: true
+          }
+        }]
+      }
     }
   });
+}
+
+function removeAllChart() {
+  $('#myChart').remove();
+  $('#views-chart').append('<canvas id="myChart" width="400" height="400"><canvas>');
 }
 
 function removeAllCharts() {
@@ -49647,15 +49666,14 @@ function apiStatisticheAnno() {
 }
 
 function init() {
+  apiStatisticheAnno();
   $('[data-mirror]').on('change keyup paste', function () {
     $('[data-mirror]').val(this.value);
   });
   $('#statisticheUtenti').on('change', function () {
     var idUtenteSelezionato = $(this).val();
     apiStatistiche(idUtenteSelezionato);
-    apiStatisticheAnno();
   });
-  ;
 }
 
 $(document).ready(init);

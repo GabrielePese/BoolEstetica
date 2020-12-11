@@ -346,7 +346,7 @@ class LoggedController extends Controller
         ->groupby('year','month')
         ->get();
 
-    
+       
 
         $serviziTotaliAnno = DB::table('service_user')
         ->join('services', 'service_user.service_ID', '=', 'services.id' )
@@ -363,6 +363,7 @@ class LoggedController extends Controller
         ->groupBy('services.id')
         ->get();
 
+        
         
        
     
@@ -385,6 +386,7 @@ class LoggedController extends Controller
 }
 
     public function apiStatistiche($idUtenteSelezionato){
+        
         $annoAttuale = Carbon::now()->format('Y');
 
         $statisticheSingoloCliente = DB::table('service_user')
