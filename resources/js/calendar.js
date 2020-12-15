@@ -1,5 +1,6 @@
-const { min, sortedLastIndexOf } = require('lodash');
+const { min, sortedLastIndexOf, now } = require('lodash');
 
+window.flatpickr = require("flatpickr");
 window.$ = require('jquery');
 
 
@@ -33,9 +34,12 @@ window.$ = require('jquery');
   
   //-------------------------------------------------------------------------------------------------------------------------------------
   function prendiGiorno(){
+
     $('#selectDay').on("change",function(){
       var valoreinput = $(this).val();
+      var durataServizio = $('#iputTempo').val(); 
     console.log(valoreinput);
+    console.log(durataServizio);
     
           $.ajax({
             url: '/apiCalendarioData/' + valoreinput,
@@ -45,7 +49,7 @@ window.$ = require('jquery');
               console.log('result', result);
               console.log('DATA', data);
 
-              manipolaDatiCalendario(data);
+              manipolaDatiCalendario(data,durataServizio);
             },
             error: function(err){
               console.log('error');
@@ -57,7 +61,7 @@ window.$ = require('jquery');
 
  //--------------------------------------------------------------------------------------------------------------------------------
 
-  function printArray(optionArray, serviceType){
+  function printArray(optionArray, durataServizio){
     console.log(optionArray);
     
 
@@ -70,16 +74,16 @@ window.$ = require('jquery');
     for (let index = 0; index < optionArray.length; index++) {   
       
       console.log("OPZIONE ARRAY",optionArray);
+      console.log('DENTRO CONTROLLO ', durataServizio);
 
-      
-      if (serviceType == 1 || serviceType == 2 || serviceType == 3 ) // se servizio dura 1 ora
+      if( durataServizio == 60)  // se servizio dura 1 ora
       {          
           if (optionArray[index] !== "12:30" && optionArray[index] !== "13:00" && optionArray[index] !== "13:30" )  // se e'diverso da 12.30 13 13.30.. escludo orari della PAUSA.La Pausa e' dalle 13 alle 14 per servizi 60min
           {
             $('#selectReservation').append(`'<option value="${optionArray[index]}">${optionArray[index]}</option>'`);    // qui gli dico di stampare gli orari disponibili.    
           }       
         }   
-        else if (serviceType == 4) 
+        else if (durataServizio == 30 ) 
         {          
           if (optionArray[index] !== "13:00" && optionArray[index] !== "13:30" )  // escludo orari della PAUSA per servizi 30 min, quindi posso prenotare dalle 12.30 alle 13 poi dalle 14 in poi. 
           {       
@@ -95,7 +99,7 @@ window.$ = require('jquery');
 
  //--------------------------------------------------------------------------------------------------------------------------------
 
- function  get60MinOption(unbookedHours, service){           
+ function  get60MinOption(unbookedHours, durataServizio){           
 
   console.log("entro nella funzione con", unbookedHours );
 
@@ -117,13 +121,13 @@ window.$ = require('jquery');
             }        
       }
                  console.log("Orari Possibili per Prenotare Serivizi da 60 minuti: ", arrayOptionToPrint);
-                 printArray(arrayOptionToPrint,service);
+                 printArray(arrayOptionToPrint,durataServizio);
 
  }
 
  //--------------------------------------------------------------------------------------------------------------------------------
 
- function  get30MinOption(unbookedHours, service){           
+ function  get30MinOption(unbookedHours, durataServizio){           
 
   console.log("entro nella funzione con", unbookedHours );
 
@@ -145,7 +149,7 @@ window.$ = require('jquery');
             }        
       }
                  console.log("Orari Possibili per Prenotare Serivizi da 30 minuti: ", arrayOptionToPrint);
-                 printArray(arrayOptionToPrint, service);
+                 printArray(arrayOptionToPrint, durataServizio);
 
  }
 
@@ -232,7 +236,7 @@ window.$ = require('jquery');
       }
 
 //---------------------------------------------------------------------------------------------------------------------------------
-function manipolaDatiCalendario(data){
+function manipolaDatiCalendario(data, durataServizio){
   var orarioApertura= 8;
   var orarioAperturaMoment = moment(orarioApertura, 'h').format('kk:mm');
   
@@ -267,17 +271,18 @@ function manipolaDatiCalendario(data){
               
 
               
-                 
+                 console.log('MANIPOLATDI CONTROLLO ', durataServizio );
 
-                  if ( servizio == 1 || servizio == 2 || servizio == 3 )  // se servizio dura 60 minuti => qui aggiungo tutti i servizi con duration 60 min
+                  if ( durataServizio == 60)  // se servizio dura 60 minuti => qui aggiungo tutti i servizi con duration 60 min
                   {
+                    console.log('E DENTROOOOOOOOO A 60')
                     let arrayTotalBookingSliced = arrayTotalBooking.slice(0, -1); // slice toglie i valori che gli indichi dall'array. all'inzio non tolgo nulla e alla fine faccio -1, quindi lui mi toglie 18.30.              
-                    printArray(arrayTotalBookingSliced, servizio);
+                    printArray(arrayTotalBookingSliced, durataServizio);
                   }    
         
-                  if( servizio == 4 )
+                  if( durataServizio == 30)
                   {              
-                    printArray(arrayTotalBooking, servizio);                
+                    printArray(arrayTotalBooking, durataServizio);                
                   }     
 
                                
@@ -289,16 +294,16 @@ function manipolaDatiCalendario(data){
                 var unbookedHours = notBookedHours(data, orarioAperturaMoment, orarioChiusuraMoment,ultimoAppuntamento30Moment, ultimoAppuntamento60Moment);  // qui recupero le ore e mezzore libere
                 console.log("UNBOOKED HOURS: ", unbookedHours);             
               
-              if ( servizio == 1 || servizio == 2 || servizio == 3 )
+              if ( durataServizio == 60 )
                {
                 console.log('-----------------------SERVIZIO con durata 60 min-----------------------------------');                    
-                get60MinOption(unbookedHours, servizio);
+                get60MinOption(unbookedHours, durataServizio);
               }    
     
-              if( servizio == 4 )
+              if( durataServizio == 30 )
               {               
                 console.log('-----------------------SERVIZIO con durata 30 min-----------------------------------');  
-                get30MinOption(unbookedHours, servizio);                
+                get30MinOption(unbookedHours, durataServizio);                
               }   
 
         }// FINE CICLO ELSE IF DATA LENGTH >= 1
@@ -310,8 +315,32 @@ function manipolaDatiCalendario(data){
 
 
 function init() {
+  
+
+ 
+  
 
   prendiGiorno();
+
+
+  // per installare flatpicker il cdn non va.USA npm i flatpickr --save
+
+  flatpickr("#selectDay", {
+    dateFormat: "Y-m-d",
+    defaultDate: 'today',
+    "disable": [
+        function(date) {
+           return (date.getDay() === 0 || date.getDay() === 6);  // disable weekends
+        }
+    ],
+    "locale": {
+        "firstDayOfWeek": 1 // set start day of week to Monday
+    }
+  });
+
+
+
+
 
 }
 

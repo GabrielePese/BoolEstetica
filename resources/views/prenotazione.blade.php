@@ -2,6 +2,8 @@
 
 @section('content')
 <script src="{{asset('js/calendar.js')}}"></script>
+<input style="display:none" id="iputTempo" value="{{($servizio -> duration)}}"> 
+
 @auth
 @if (Auth::user()->admin)
 

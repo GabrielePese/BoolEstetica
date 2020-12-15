@@ -20,7 +20,11 @@
 
 <div>
     <label for="duration"> duration </label>
-    <input type="number" name="duration" value="">
+    <select name="duration" id="">
+        <option value="30">30</option>
+        <option value="60">60</option>
+    </select>
+ 
 </div>
 
 <div >
