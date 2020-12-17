@@ -21,11 +21,23 @@
 
     <ul>
         <h2>RECENSIONI:</h2>
+        @if (($quantitaRecensioni != 0))
+            
+        <span class="stelle"></span> <span>su {{$quantitaRecensioni}} recensioni.</span> 
+        
+        <input style="display: none;" class="numerostelle" value="{{($votoRecensioniTotali / $quantitaRecensioni)}}" >
+        @else 
+        <p>Non ci sono ancora recensioni per questo trattamento..</p>
+        @endif
+        
         @foreach ($recensioni as $recensione)
-        <li>{{$recensione -> name}} ha scritto:
-            {{$recensione -> review_text}}</li><br>
-            Ha dato {{$recensione -> review_vote}} stelle su 10. 
-            <hr>
+        <div style=" padding-left:20px; list-style: none; margin-bottom:20px">
+            
+            <li>{{$recensione -> name}} ha scritto:<br>
+                {{$recensione -> review_text}}</li>
+                Ha votato {{$recensione -> review_vote}} / 5. 
+        </div>
+            
         @endforeach
     </ul>
         @auth

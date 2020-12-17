@@ -30,12 +30,19 @@
     
     <div>
         <label for="review_vote"> review_vote </label>
-        <input type="number" name="review_vote" value="">
+        <select name="review_vote" id="" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        
     </div>
     
     <div>
         <label for="review_text"> review_text </label>
-        <input type="text" name="review_text" value="">
+        <input type="text" name="review_text" value="" required>
     </div>
     
     <div style="display:none">

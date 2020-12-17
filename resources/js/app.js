@@ -210,9 +210,31 @@ function apiStatisticheAnno(){
 
 }
 
+function checkStelle(){
+  var stelle = $('.numerostelle').val();
+  var stelleGiuste = Math.round(stelle);
+  console.log(stelleGiuste);
+
+
+  $('.stelle').html(`<i class="fas fa-star"></i>`);
+
+  if (stelleGiuste == 1){
+    $('.stelle').html(`<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>`) ;
+} else if(stelleGiuste == 2){
+  $('.stelle').html(`<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> `);
+}else if(stelleGiuste == 3){
+  $('.stelle').html(`<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>`);
+}else if(stelleGiuste == 4){
+  $('.stelle').html(`<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>`);
+}else if(stelleGiuste == 5){
+  $('.stelle').html(`<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>`);
+}
+
+}
+
 
 function init(){
-  
+  checkStelle();
   
   apiStatisticheAnno();
   

@@ -32,8 +32,23 @@ class HomeController extends Controller{
         -> where('service_ID', '=' , $id ) //seleziono solo dove il service_ID e' uguale all'id del servizio, quindi all servizio della show.
         -> get();
 
+        $votoRecensioniTotali = DB::table('service_user') // nel joi unisco la tabella user id al user_ID della tabella ponte, cioé sto entrando dalla tabella ponte nella tabella user
+        -> where('service_ID', '=' , $id ) 
+        ->select('review_vote')//seleziono solo dove il service_ID e' uguale all'id del servizio, quindi all servizio della show.
+        -> sum('review_vote');
+
+        $quantitaRecensioni =  DB::table('service_user') // nel joi unisco la tabella user id al user_ID della tabella ponte, cioé sto entrando dalla tabella ponte nella tabella user
+        -> where([
+                 ['service_ID', '=' , $id],
+                 ['review_vote', '!=', 'NULL'] 
+        ]) 
+        ->select('review_vote')//seleziono solo dove il service_ID e' uguale all'id del servizio, quindi all servizio della show.
+        -> count();
+
+       
+
         
-              return view('show', compact('service', 'recensioni', 'user'));
+              return view('show', compact('service', 'recensioni', 'user', 'votoRecensioniTotali', 'quantitaRecensioni' ));
     }
 
    
