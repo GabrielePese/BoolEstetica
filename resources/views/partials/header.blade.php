@@ -1,13 +1,13 @@
 <header>
 
    
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" style="color:black;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span style="color:black;" class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -18,13 +18,13 @@
                     <!-- Center Side Of Navbar -->
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;"  href="{{ route('login') }}">{{ __('Trattamenti') }}</a>
+                            <a class="nav-link" style="font-size: 20px; color:black;"  href="{{ route('login') }}">{{ __('Trattamenti') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;" href="{{ route('login') }}">{{ __('Chi siamo') }}</a>
+                            <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('login') }}">{{ __('Chi siamo') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;" href="{{ route('login') }}">{{ __('Contatti') }}</a>
+                            <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('login') }}">{{ __('Contatti') }}</a>
                         </li>
                     </ul>
 
@@ -43,7 +43,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" style="font-size: 20px; t;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span style="color:blue;" >{{ Auth::user()->name }}</span>
+                                    <span style="color:black;" >{{ Auth::user()->name }}</span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

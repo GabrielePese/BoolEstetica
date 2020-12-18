@@ -9,3 +9,46 @@
 
 
 // @import 'partials.fullcalendar-custom';
+
+
+* {
+    font-family: 'Raleway', sans-serif;
+
+}
+header{
+    background-color: pink;
+    opacity: 0.65;
+    color:black;
+}
+
+
+footer{
+    background-color: pink;
+    height: 6.5vh;
+    opacity: 0.65;
+    position: fixed;
+    bottom: 0;
+}
+
+// PAAGINA PROFILO - ADMIN
+
+.bloccoAdmin {
+
+    margin-bottom: 25px;
+
+    .bloccoAdminInterno {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid pink;
+        border-radius: 10px;
+
+        .bloccoAdminInternoPrimoP {
+            font-family: 'Great vibes';
+            font-size: 30px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+    }
+}
