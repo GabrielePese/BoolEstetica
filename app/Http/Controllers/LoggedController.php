@@ -120,6 +120,10 @@ class LoggedController extends Controller
     }
 
 
+    public function visualizzaCalendario(){
+        return view('visualizzaCalendario');
+    }
+
 
     public function prenota($id){
         $servizio = Service::findOrFail($id);
@@ -130,6 +134,7 @@ class LoggedController extends Controller
 
         return view ('prenotazione' , compact('servizio', 'users'));
     }
+    
 
     public function apiCalendar(){
 

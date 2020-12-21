@@ -10905,20 +10905,65 @@ a.text-dark:focus {
 
 * {
   font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  background-color: pink;
-  opacity: 0.65;
+  background-color: rgba(244, 194, 194, 0.7);
   color: black;
+  z-index: 99;
+  position: relative;
+}
+
+main {
+  flex-grow: 1;
+}
+
+main .cerchioTrattamento {
+  width: 300px;
+}
+
+main .cerchioTrattamento .cerchioImg {
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+main .cerchioTrattamento .cerchioImg img {
+  width: 110%;
+  transition: all 3s;
+}
+
+main .cerchioTrattamento .cerchioImg:hover img {
+  width: 100%;
+}
+
+main .quadratoTrattamento .quadratoImg {
+  border-radius: 10px;
+  height: 180px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+main .quadratoTrattamento .quadratoImg img {
+  width: 120%;
 }
 
 footer {
-  background-color: pink;
-  height: 6.5vh;
+  background-color: rgba(244, 194, 194, 0.7);
+  height: 60px;
   opacity: 0.65;
-  position: fixed;
-  bottom: 0;
 }
 
 .bloccoAdmin {

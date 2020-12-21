@@ -21,7 +21,7 @@ Route::post('/create-promo-store', 'LoggedController@createpromostore')->name('c
 Route::get('/scrivirecensione/{id}', 'LoggedController@scrivirecensione')->name('scrivirecensione');
 Route::post('/recensione-post/{id}', 'LoggedController@recensionepost')->name('recensione-post');
 Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anulla-app');
-
+Route::get('/visualizzaCalendario', 'LoggedController@visualizzaCalendario')-> name ('visualizzaCalendario');
 
 Route::get('/apiCalendar', 'LoggedController@apiCalendar')-> name ('apiCalendar');
 

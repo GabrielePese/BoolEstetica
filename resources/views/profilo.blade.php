@@ -14,7 +14,7 @@
                 <div class="col-6 col-md-3 bloccoAdmin">
                     <div class="bloccoAdminInterno">
                         <p class="bloccoAdminInternoPrimoP"> Calendario</p>
-                        <p style="margin-bottom:30px;"> <a style= "color:black;" href="{{ route('home') }}">Visualizza Calendario</a></p>
+                        <p style="margin-bottom:30px;"> <a style= "color:black;" href="{{ route('visualizzaCalendario') }}">Visualizza Calendario</a></p>
                     </div>
                 </div>
 
