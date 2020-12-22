@@ -1,7 +1,7 @@
 <header>
 
-   
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+    
+        <nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 
                 <button class="navbar-toggler ml-auto" type="button" style="color:black;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,7 +39,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" style="font-size: 20px; color:pink;" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" style="font-size: 20px;" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -66,5 +66,5 @@
                 </div>
             </div>
         </nav>
-
+   
 </header>

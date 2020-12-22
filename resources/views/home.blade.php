@@ -1,8 +1,12 @@
 @extends('layouts.main-layout')
 
+
+
 @section('content')
 
-<div class="container-fluid p-0">
+<div class="container-fluid p-0" style="border: 2px solid green">
+
+
 
 
 
@@ -15,8 +19,8 @@
         @endif
     @endauth
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+    <div id="carouselExampleControls" style="border: 2px solid red; " class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" >
             @foreach($service as $key => $ser)
                 @if($ser -> disabled || $ser -> delete)
                 @else
@@ -24,21 +28,28 @@
 
                     @if($key == 0)
 
-                        <div class="carousel-item active" style="height: 500px; width: 100%;  position: relative;">
-                            <a href="{{ route("show-tratt", $ser -> id) }}"
-                                style="height: 500px; width: 100%;">
-                                <img class="d-block"
-                                    style="width:100%; height:auto;position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);"
-                                    src="{{ $ser-> photo }}" alt="{{ $ser-> photo }}">
+                        <div class="carousel-item active bootCarousTop ">
+                           
+                                <a href="{{ route("show-tratt", $ser -> id) }}">
+                                   <img class="d-block"  src="{{ $ser-> photo }}" alt="{{ $ser-> photo }}">
+                                       <div class="bloccoBiancoJambo text-center">
+                                       <h2>{{ $ser-> name }}</h2>
+                                       
+                                       <h5>{{ $ser-> description }}</h5>
+
+                                </div>
                             </a>
                         </div>
                     @else
-                        <div class="carousel-item" style="height: 500px; width: 100%;  position: relative; top:0;">
-                            <a href="{{ route("show-tratt", $ser -> id) }}"
-                                style="height: 500px; width: 100%;">
-                                <img class="d-block"
-                                    style="width:100%; height:auto;position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);"
-                                    src="{{ $ser-> photo }}" alt="{{ $ser-> photo }}">
+                        <div class="carousel-item bootCarousTop col-12">
+                            <a href="{{ route("show-tratt", $ser -> id) }}">
+                                <img class="d-block" src="{{ $ser-> photo }}" alt="{{ $ser-> photo }}">
+
+                                    <div class="bloccoBiancoJambo text-center ">
+                                    <h2>{{ $ser-> name }}</h2>
+                                    
+                                    <h5>{{ $ser-> description }}</h5>
+                                    </div>
                             </a>
                         </div>
 
@@ -58,6 +69,7 @@
         </div>
 
     </div>
+
 </div>
 
 <div class="container mt-5 mb-3">
@@ -189,36 +201,42 @@
 
 </div>
 
-
-
-
-
-<div class="container">
+<div class="container mb-5 mt-5">
     <div class="row">
-        <div class="bloccoInstagram">
-            <div class="bloccoCarouselBianco">
-    
-            </div>
-            <div id="carouselExampleIndicators" class="carousel slide instaCarousel" data-ride="carousel">
-    
-                <div class="carousel-inner" id="instafeed-container"> </div>
-    
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <div class="col-12 text-center">
+            <h1 style="font-family: 'great vibes'">Instagram Feed</h1>
+        </div>
+    </div>
+</div>
+
+<div id="containerPerInstagramConflittoSliderBootstrapInAlto">
+    <div class="top-content">
+        <div class="container-fluid">
+            <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner row w-100 mx-auto" id='instafeed-container' role="listbox">
+                   
+                </div>
+                <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-    
-            <div class="bloccoCarouselBianco">
-    
-            </div>
         </div>
     </div>
 </div>
+
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic similique aliquid sed labore! Repellat incidunt non minus accusantium consectetur ratione perferendis, corporis, impedit modi temporibus sequi in iste qui quas.
+</div>
+
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
 
@@ -227,20 +245,64 @@
         get: 'user',
         target: "instafeed-container",
         resolution: 'low_resolution',
+        limit:10,
         accessToken: 'IGQVJXMzZA0R05OU25QeVVJNm53OTJGZAUxvSk5PQjRRVTBGNlBhcDFZAZA05LcXAtUVVHRjh6OWw0T1NKVnR5cXQ0Rm16RFAyMnQ2RWNUTUpiaGszRkZAiR2lFMVFRd1o5WFd6MklxeDVHMGJKV0VJR2tXcQZDZD'
     });
 
 
-
-    userFeed._options.template = `<div class="carousel-item fotoInsta"> <img src="@{{ image }}"> </div> `;
+        userFeed._options.template=  `<div class="carousel-item fotoInsta col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="@{{link}}"> <img src="@{{image}}" class="img-fluid mx-auto d-block" alt="img6"></a>
+                    
+                </div>`
+    // userFeed._options.template = `<div class="carousel-item fotoInsta"> <img src="@{{ image }}"> </div> `;
 
 
 
     userFeed.run();
+    // document.addEventListener('DOMContentLoaded', (event) => {
+    //     setTimeout(function () {
+    //         for (var i = 0; i < 1; i++) {
+    //             document.querySelectorAll('div.fotoInsta')[i].classList.add('active');
+    //         }
+    //     }, 500)
+
+
+    // });
+
+
+
+
     document.addEventListener('DOMContentLoaded', (event) => {
         setTimeout(function () {
             for (var i = 0; i < 1; i++) {
                 document.querySelectorAll('div.fotoInsta')[i].classList.add('active');
+    //         }
+    //     
+            $('#carousel-example').on('slide.bs.carousel', function (e) {
+    /*
+        CC 2.0 License Iatek LLC 2018 - Attribution required
+    */
+    var $e = $(e.relatedTarget);
+   
+    var idx = $e.index();
+    
+    var itemsPerSlide = 5;
+    var totalItems = $('.carousel-item.fotoInsta').length;
+                console.log(totalItems);
+    if (idx >= totalItems-(itemsPerSlide-1)) {
+        
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i=0; i<it; i++) {
+            // append slides to end
+            if (e.direction=="left") {
+                $('.carousel-item.fotoInsta').eq(i).appendTo('#containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner');
+            }
+            else {
+                $('.carousel-item.fotoInsta').eq(0).appendTo('#containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner');
+            }
+        }
+    }
+});
             }
         }, 500)
 
