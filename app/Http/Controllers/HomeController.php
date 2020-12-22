@@ -6,10 +6,14 @@ use App\ServiceUser;
 use App\Service;
 use App\Service_User;
 use App\User;
+use Phpfastcache\Helper\Psr16Adapter;
+use GuzzleHttp\Client;
+
 use Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller{
     public function index(){
@@ -17,8 +21,6 @@ class HomeController extends Controller{
  
         $user = User::all();
         $service = Service::all();
-
-    
         
         return view('home', compact('service', 'user' ));
     }

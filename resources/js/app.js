@@ -234,6 +234,8 @@ function checkStelle(){
 
 
 function init(){
+
+
   checkStelle();
   
   apiStatisticheAnno();
