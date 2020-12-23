@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container-fluid p-0" style="border: 2px solid green">
+<div class="container-fluid p-0">
 
 
 
@@ -19,7 +19,7 @@
         @endif
     @endauth
 
-    <div id="carouselExampleControls" style="border: 2px solid red; " class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" >
             @foreach($service as $key => $ser)
                 @if($ser -> disabled || $ser -> delete)
@@ -28,7 +28,7 @@
 
                     @if($key == 0)
 
-                        <div class="carousel-item active bootCarousTop ">
+                        <div class="carousel-item active bootCarousTop">
                            
                                 <a href="{{ route("show-tratt", $ser -> id) }}">
                                    <img class="d-block"  src="{{ $ser-> photo }}" alt="{{ $ser-> photo }}">
@@ -80,7 +80,7 @@
     </div>
     <div class="row">
 
-        <div class="col-12 col-sm-4">
+        <div class="col-md-12 col-lg-4">
             <div class="cerchioTrattamento mx-auto">
                 <div class="cerchioImg">
                     <img src="{{ asset('/img/tondino.jpg') }}" alt="1">
@@ -93,7 +93,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-md-12 col-lg-4">
             <div class="cerchioTrattamento mx-auto">
                 <div class="cerchioImg">
                     <img src="{{ asset('/img/tondino2.jpg') }}" alt="1">
@@ -106,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-md-12 col-lg-4">
             <div class="cerchioTrattamento mx-auto">
                 <div class="cerchioImg">
                     <img src="{{ asset('/img/tondino3.jpg') }}" alt="1">

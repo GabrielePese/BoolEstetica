@@ -10946,8 +10946,8 @@ main .bootCarousTop a {
 }
 
 main .bootCarousTop img {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11219,14 +11219,74 @@ footer {
   margin-bottom: 50px;
 }
 
-@media (max-width: 575.98px) {
-  #carouselExampleControls {
-    height: 200px;
+@media (max-width: 1600px) {
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    height: auto;
   }
 
-  .bootCarousTop img {
-    width: auto;
+  #carouselExampleControls {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .bootCarousTop a img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    transform: none;
+  }
+
+  main .bootCarousTop .bloccoBiancoJambo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 200px;
+    width: 300px;
+    z-index: 20;
+    color: black;
+    border: 1px solid grey;
+    background-color: rgba(248, 248, 248, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    outline: 1px dashed #fff;
+    outline-offset: -10px;
+  }
+
+  .cerchioTrattamento {
+    width: 300px;
+  }
+
+  .cerchioTrattamento .cerchioImg {
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .cerchioTrattamento .cerchioImg img {
+    width: 110%;
+    transition: all 3s;
+  }
+
+  .cerchioTrattamento .cerchioImg:hover img {
+    width: 100%;
   }
 }
 
