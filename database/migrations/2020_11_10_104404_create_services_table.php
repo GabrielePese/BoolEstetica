@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
 
             $table->string('name');
             $table->text('description');
+            $table->string('type');
             $table->integer('duration');
             $table->decimal('price' , 6,2);
             $table->decimal('originalprice', 6,2) -> nullable();

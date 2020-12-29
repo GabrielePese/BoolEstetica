@@ -13,7 +13,7 @@
     
 </div>
 
-@if (($servizio -> id) !== 5)
+@if (($servizio -> id) !== 1)
 
 <form action="{{route('prenota-post', $servizio -> id)}}" method="post"> 
     @csrf

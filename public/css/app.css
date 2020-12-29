@@ -10911,6 +10911,10 @@ a.text-dark:focus {
   -webkit-box-sizing: border-box;
 }
 
+* li {
+  list-style: none;
+}
+
 body {
   height: 100vh;
   display: flex;
@@ -11296,10 +11300,6 @@ select {
   border: 1px solid #eea1ee;
   border-radius: 4px;
   padding: 2px 0;
-}
-
-input[type=text] {
-  width: 100px;
 }
 
 input[type=text]:focus,

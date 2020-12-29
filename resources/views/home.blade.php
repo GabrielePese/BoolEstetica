@@ -22,11 +22,11 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" >
             @foreach($service as $key => $ser)
-                @if($ser -> disabled || $ser -> delete)
+                @if($ser -> disabled || $ser -> delete || $ser -> id == 1)
                 @else
 
 
-                    @if($key == 0)
+                    @if($key == 1)
 
                         <div class="carousel-item active bootCarousTop">
                            

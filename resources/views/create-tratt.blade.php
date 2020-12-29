@@ -19,11 +19,22 @@
                             <input type="text" name="name" value="" style="width: 60%">
                         </div>
                      
+                        
+                        
                         <div>
-                         <label for="description" style="width: 30%"> Descrizione </label>
-                         <input type="text" name="description" value="" style="width: 60%">
-                     </div>
-                     
+                            <label for="description" style="width: 30%"> Descrizione </label>
+                            <input type="text" name="description" value="" style="width: 60%">
+                        </div>
+                        
+                        <div>
+                            <label for="type" style="width: 30%"> Tipologia </label>
+                            <select name="type" id="" style="width: 60%">
+                                <option value="Estetica">Estetica</option>
+                                <option value="Relax">Relax</option>
+                                <option value="Decontratturanti">Decontratturanti</option>
+                                <option value="Varie">Varie</option>
+                            </select>
+                        </div>
                      <div>
                          <label for="duration" style="width: 30%"> Durata </label>
                          <input type="text" name="duration"  value="" style="width: 60%">

@@ -7,7 +7,7 @@
     <div class="row my-5">
            @foreach ($servizi as $servizio)
         
-            @if ($servizio -> delete  || $servizio -> disabled)
+            @if ($servizio -> delete  || $servizio -> disabled || $servizio -> id == 1)
         
             @else 
             <a href="{{route('show-tratt', $servizio -> id)}}" style="color: black;" >

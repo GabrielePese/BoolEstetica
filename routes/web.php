@@ -20,11 +20,15 @@ Route::post('/impostaferie/{id}', 'LoggedController@impostaferie')->name('impost
 
 Route::get('/promo/{id}', 'LoggedController@promo')->name('promo');
 Route::post('/aggiungipromo/{id}' , 'LoggedController@aggiungipromo')->name('aggiungipromo');
+
 Route::get('/create-promo', 'LoggedController@createpromo')->name('create-promo');
 Route::post('/create-promo-store', 'LoggedController@createpromostore')->name('create-promo-store');
-Route::get('/scrivirecensione/{id}', 'LoggedController@scrivirecensione')->name('scrivirecensione');
-Route::post('/recensione-post/{id}', 'LoggedController@recensionepost')->name('recensione-post');
-Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anulla-app');
+
+Route::get('/scrivirecensione/{idPrenotazione}', 'LoggedController@scrivirecensione')->name('scrivirecensione');
+Route::post('/recensione-post/{idPrenotazione}', 'LoggedController@recensionepost')->name('recensione-post');
+
+Route::get('/anuullaapp/{idPrenotazione}', 'LoggedController@annullaprenotaz')-> name ('anulla-app');
+
 Route::get('/visualizzaCalendario', 'LoggedController@visualizzaCalendario')-> name ('visualizzaCalendario');
 
 Route::get('/apiCalendar', 'LoggedController@apiCalendar')-> name ('apiCalendar');

@@ -62,17 +62,21 @@
         
             <div class="col-md-12 contenitoreRecensioni pt-4">
            
-                @foreach($recensioni as $recensione)
-            
-                       
-                            <div class="col-md-12 mb-4">
-                                <h5> <span style="font-weight: bold;">Nome:</span>  {{ $recensione -> name }}</h5>
-                                <h5><span style="font-weight: bold;">Ha votato:</span> {{ $recensione -> review_vote }} </h5>
-                                <h5><span style="font-weight: bold;">Recensione: </span> {{ $recensione -> review_text }} </h5>
-                            </div>
-                        
-                        
-                        @endforeach
+            @foreach($recensioni as $recensione)
+                @if ($recensione -> deleted ==1)
+                @else 
+
+                @if ($recensione -> review_vote)
+
+                <div class="col-md-12 mb-4">
+                    <h5> <span style="font-weight: bold;">Nome:</span>  {{ $recensione -> name }}</h5>
+                    <h5><span style="font-weight: bold;">Ha votato:</span> {{ $recensione -> review_vote }} </h5>
+                    <h5><span style="font-weight: bold;">Recensione: </span> {{ $recensione -> review_text }} </h5>
+                </div>
+                    
+                @endif
+                @endif
+             @endforeach
         
             </div>
         

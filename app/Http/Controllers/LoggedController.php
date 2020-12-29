@@ -35,44 +35,63 @@ class LoggedController extends Controller
         $userUtente = User::findOrFail($id);  //qui prendo il singolo utente, che poi utilizzeró sotto anche se prendera'tutti gli utenti (non so il perche')
         $services = Service::all();
         
+       
         $ora = Carbon::now();
         $date_now = Carbon::parse($ora); //permette a carbon di leggere orario
-        $date_now -> addHours(1); //aggiungo alla data un ora perche'lui prende la data di Londra quindi con un ora in meno
+        $date_now  -> addHours(1); //aggiungo alla data un ora perche'lui prende la data di Londra quindi con un ora in meno
+       
         
         $prenotazioni = $userUtente-> services->first();  // prendo il contenuto nella tabella ponte UserService. 
         if($prenotazioni){
-            $prenotazioniNuovo = $userUtente-> services->first()->pivot->get();
+            $prenotazioniNuovo = DB::table('service_user')
+            ->join('users', 'service_user.user_ID', '=', 'users.id')
+            ->join('services', 'service_user.service_ID', '=', 'services.id')
+            ->select(
+                DB::raw('service_user.id as idPrenotazione'),
+                DB::raw('DATE_FORMAT(date_start, "%Y-%m-%d %H:%i") as new_start'),
+                DB::raw('DATE_FORMAT(date_end, "%Y-%m-%d %H:%i") as new_end'),
+                DB::raw('services.name as title'),
+                DB::raw('users.name as userName'),
+                DB::raw('service_user.user_ID'),
+                DB::raw('services.id as idServizio'),
+                DB::raw('service_user.review_vote as votoRecensione'))
+                
+                -> where([
+                    ['deleted', '=' , 0],
+                    ['users.id', '=', $id]
+                    ])
+               
+                    -> get();
+                    
+             
+
+            
+            // $prenotazioniNuovo = $userUtente-> services->first()->pivot->get();
+                
         }
         else {
             return view ('paginaNOdati');
         }
 
-        
-        // $prenotazione = DB::table('service_user')
-        // ->where('user.id' , '=' , $userUtente )
-        // ->get();
-
-        
-        
-      
+               
+             
         
         return view('profilo', compact('prenotazioniNuovo', 'users','userUtente', 'services', 'date_now'));  
     }
 
-    public function scrivirecensione($id){
+    public function scrivirecensione($idPrenotazione){
         
-        $tabella = DB::table('service_user')->where('id', '=', $id)-> get(); // qui prendo dalla tabella service_user dove id e'uguale all'id che gli passiamo noi cioe' id del service_user, cioe'id della prenotazione.
+        $tabella = DB::table('service_user')->where('id', '=', $idPrenotazione)-> get(); // qui prendo dalla tabella service_user dove id e'uguale all'id che gli passiamo noi cioe' id del service_user, cioe'id della prenotazione.
         $tabellaponte = $tabella[0]; // qui prendiamo indice 0 dell'array. cosi ci da i risultati che vogliamo
         
-   
                
         
-        return view('scrivirecensione', compact('id','tabellaponte'));  
+        return view('scrivirecensione', compact('idPrenotazione','tabellaponte'));  
         
        
     }
 
-    public function recensionepost(Request $request, $id){
+    public function recensionepost(Request $request, $idPrenotazione){
        
         
         $data = $request -> all();   //prendo i vari dati inseriti nel form
@@ -101,16 +120,19 @@ class LoggedController extends Controller
     ];
     
 
-    DB::table('service_user')->where('id', '=', $id)-> update($data);   //faccio update con i data della tabella ponte con id uguale id della prenotazione
+    DB::table('service_user')->where('id', '=', $idPrenotazione)-> update($data);   //faccio update con i data della tabella ponte con id uguale id della prenotazione
 
     return redirect() -> route('home');
     }
+
+
     public function createTratt()
     {
         
         $service = Service::all();
         return view('create-tratt', compact('service'));
     }
+
 
     public function storeTratt(Request $request ){
         $data = $request -> all();
@@ -120,9 +142,11 @@ class LoggedController extends Controller
     }
 
 
+
     public function visualizzaCalendario(){
         return view('visualizzaCalendario');
     }
+
 
 
     public function prenota($id){
@@ -135,6 +159,7 @@ class LoggedController extends Controller
         return view ('prenotazione' , compact('servizio', 'users'));
     }
     
+
 
     public function apiCalendar(){
 
@@ -158,7 +183,7 @@ class LoggedController extends Controller
             
             if (Auth::user()->admin) {
                
-                if (($recensione -> idServizio) == 5) {
+                if (($recensione -> idServizio) == 1) {
                     $var = [
                         'title'=> 'Non disponibile',
                         'start' => $recensione -> date_start ,
@@ -249,7 +274,7 @@ class LoggedController extends Controller
         return redirect() -> route('home');
     }
     
-    public function impostaferieGet($id = 5){
+    public function impostaferieGet($id = 1){
         $servizio = Service::findOrFail($id);
 
         $this->apiCalendar();
@@ -296,8 +321,8 @@ class LoggedController extends Controller
         return redirect() -> route('home');
     }
 
-    public function annullaprenotaz($id){
-        $prenotazione = DB::table('service_user')-> where('id', '=', $id)->update(['deleted' => 1] );
+    public function annullaprenotaz($idPrenotazione){
+        $prenotazione = DB::table('service_user')-> where('service_user.id', '=', $idPrenotazione)->update(['deleted' => 1] );
         
         
         return redirect() -> route('home');
