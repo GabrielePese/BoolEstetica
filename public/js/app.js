@@ -49556,7 +49556,7 @@ function printStatistiche(data) {
   $('#targetStat').html('');
 
   for (var index = 0; index < data.length; index++) {
-    $('#targetStat').append('<h2>' + 'Il cliente ' + data[index]['cliente'] + ' ha fatto il trattamento ' + data[index]['nome_Servizio'] + ' ' + data[index]['prenotatazioni'] + ' volte.');
+    $('#targetStat').append('<h5>' + 'Il cliente ' + data[index]['cliente'] + ' ha fatto il trattamento ' + data[index]['nome_Servizio'] + ' ' + data[index]['prenotatazioni'] + ' volte.');
   }
 } //PARTE PER GRAFICO STATISTICHE
 

@@ -8,63 +8,75 @@
    <form action="{{route('store-tratt')}}" method="post"> 
     @csrf
     @method('post')
-   <div>
-       <label for="name"> Name </label>
-       <input type="text" name="name" value="">
-   </div>
-
-   <div>
-    <label for="description"> description </label>
-    <input type="text" name="description" value="">
-</div>
-
-<div>
-    <label for="duration"> duration </label>
-    <select name="duration" id="">
-        <option value="30">30</option>
-        <option value="60">60</option>
-    </select>
- 
-</div>
-
-<div >
-    <label for="price"> price </label>
-    <input type="number" data-mirror name="price" value="">
-</div>
-
-
-<div style="display:none;">
-    <label for="originalprice"> originalprice </label>
-    <input type="number" data-mirror name="originalprice" value="">
-</div>
-
-
-<div>
-    <label for="photo"> photo </label>
-    <input type="text" name="photo" value="">
-</div>
-
-<div>
-    <label for="video"> video </label>
-    <input type="text" name="video" value="">
-</div>
-
-<div>
-    <label for="promotion"> promotion </label>
-    <input type="number" name="promotion" value="">
-</div>
-
-<div>
-    <label for="disabled"> disabled </label>
-    <input type="text" name="disabled" value="">
-</div>
-
-<div>
-    <label for="delete"> delete </label>
-    <input type="text" name="delete" value="">
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto mt-5">
+                <div class="card">
+                    <H1 class="text-center my-2" style="font-family: 'Great vibes';" > Aggiungi Servizio</H1>
+                    <div class="card-body d-flex align-items-space-between justify-content-center flex-column lineHeight">
+                        <div>
+                            <label for="name" style="width: 30%"> Nome </label>
+                            <input type="text" name="name" value="" style="width: 60%">
+                        </div>
+                     
+                        <div>
+                         <label for="description" style="width: 30%"> Descrizione </label>
+                         <input type="text" name="description" value="" style="width: 60%">
+                     </div>
+                     
+                     <div>
+                         <label for="duration" style="width: 30%"> Durata </label>
+                         <input type="text" name="duration"  value="" style="width: 60%">
+                         
+                      
+                     </div>
+                     
+                     <div >
+                         <label for="price" style="width: 30%"> Prezzo </label>
+                         <input type="number" data-mirror name="price" value="" style="width: 60%">
+                     </div>
+                     
+                     
+                     <div style="display:none;">
+                         <label for="originalprice"> originalprice </label>
+                         <input type="number" data-mirror name="originalprice" value="" style="width: 60%">
+                     </div>
+                     
+                     
+                     <div>
+                         <label for="photo" style="width: 30%"> Foto </label>
+                         <input type="text" name="photo" value="" style="width: 60%">
+                     </div>
+                     
+                     <div>
+                         <label for="video" style="width: 30%"> Video </label>
+                         <input type="text" name="video" value="" style="width: 60%">
+                     </div>
+                     
+                     <div>
+                         <label for="promotion" style="width: 30%"> Promozione </label>
+                         <input type="number" name="promotion" value="" style="width: 60%">
+                     </div>
+                     
+                     <div>
+                         <label for="disabled" style="width: 30%"> Disabilitato </label>
+                         <input type="text" name="disabled" value="" style="width: 60%">
+                     </div>
+                     
+                     <div style="display:none">
+                         <label for="delete" style="width: 30%; "> Eliminato </label>
+                         <input type="text" name="delete" value="0" style="width: 60%">
+                     </div>
+                        
+                     <Button class="button button1 mt-5" id="bottone" type="submit"> CREA NUOVO TRATTAMENTO</Button>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
    
-<Button id="bottone" type="submit"> CREA NUOVO TRATTAMENTO</Button>
+    </div>
+
 </form>
     @else 
     SOLO L'AMMINISTRATORE PUO' AGGIUGNERE NUOVI TRATTAMENTI.

@@ -10920,6 +10920,7 @@ body {
 header {
   color: black;
   z-index: 99;
+  margin-bottom: 64px;
 }
 
 header .navbar {
@@ -10927,9 +10928,8 @@ header .navbar {
 }
 
 main {
+  background-color: white;
   flex-grow: 1;
-  /* MD */
-  /* LG */
 }
 
 main .bootCarousTop {
@@ -11031,12 +11031,18 @@ main .quadratoTrattamento .quadratoImg img {
   width: 120%;
 }
 
+footer {
+  background-color: rgba(238, 161, 238, 0.5);
+  height: 80px;
+  opacity: 0.65;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
-  main #containerPerInstagramConflittoSliderBootstrapInAlto {
+  #containerPerInstagramConflittoSliderBootstrapInAlto {
     /* Show 4th slide on md if col-md-4*/
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
     position: absolute;
     top: 0;
     right: -33.3333%;
@@ -11048,11 +11054,11 @@ main .quadratoTrattamento .quadratoImg img {
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-  main #containerPerInstagramConflittoSliderBootstrapInAlto {
+  #containerPerInstagramConflittoSliderBootstrapInAlto {
     /* Show 3rd slide on sm if col-sm-6*/
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
     position: absolute;
     top: 0;
     right: -50%;
@@ -11064,40 +11070,40 @@ main .quadratoTrattamento .quadratoImg img {
 }
 
 @media (min-width: 576px) {
-  main #containerPerInstagramConflittoSliderBootstrapInAlto {
+  #containerPerInstagramConflittoSliderBootstrapInAlto {
     /* show 2 items */
     /* left or forward direction */
     /* farthest right hidden item must be also positioned for animations */
     /* right or prev direction */
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item {
     margin-right: 0;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active + .carousel-item {
     display: block;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
     transition: none;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item-next {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item-next {
     position: relative;
     transform: translate3d(0, 0, 0);
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .active.carousel-item-left + .carousel-item-next.carousel-item-left,
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item,
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item,
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
     position: relative;
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item-prev.carousel-item-right {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item-prev.carousel-item-right {
     position: absolute;
     top: 0;
     left: 0;
@@ -11106,9 +11112,9 @@ main .quadratoTrattamento .quadratoImg img {
     visibility: visible;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item,
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item,
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
     position: relative;
     transform: translate3d(100%, 0, 0);
     visibility: visible;
@@ -11117,33 +11123,35 @@ main .quadratoTrattamento .quadratoImg img {
   }
 }
 
+/* MD */
+
 @media (min-width: 768px) {
-  main #containerPerInstagramConflittoSliderBootstrapInAlto {
+  #containerPerInstagramConflittoSliderBootstrapInAlto {
     /* show 3rd of 3 item slide */
     /* left or forward direction */
     /* right or prev direction */
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active + .carousel-item + .carousel-item {
     display: block;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
     transition: none;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item-next {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item-next {
     position: relative;
     transform: translate3d(0, 0, 0);
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
     position: relative;
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
     position: relative;
     transform: translate3d(100%, 0, 0);
     visibility: visible;
@@ -11152,23 +11160,25 @@ main .quadratoTrattamento .quadratoImg img {
   }
 }
 
+/* LG */
+
 @media (min-width: 991px) {
-  main #containerPerInstagramConflittoSliderBootstrapInAlto {
+  #containerPerInstagramConflittoSliderBootstrapInAlto {
     /* show 4th item */
     /* Show 5th slide on lg if col-lg-3 */
     /* left or forward direction */
     /* right or prev direction //t - previous slide direction last item animation fix */
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
     display: block;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
     transition: none;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
     position: absolute;
     top: 0;
     right: -25%;
@@ -11178,25 +11188,19 @@ main .quadratoTrattamento .quadratoImg img {
     visibility: visible;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
     position: relative;
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
 
-  main #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+  #containerPerInstagramConflittoSliderBootstrapInAlto .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
     position: relative;
     transform: translate3d(100%, 0, 0);
     visibility: visible;
     display: block;
     visibility: visible;
   }
-}
-
-footer {
-  background-color: rgba(238, 161, 238, 0.5);
-  height: 80px;
-  opacity: 0.65;
 }
 
 .bloccoAdmin {
@@ -11219,7 +11223,133 @@ footer {
   margin-bottom: 50px;
 }
 
+.showTitolo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  font-family: "great vibes";
+  font-size: 40px;
+  color: white;
+  z-index: 99;
+  font-size: 60px;
+}
+
+.perFlex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.perFlex i,
+.perFlex span,
+.perFlex p {
+  font-size: 20px;
+}
+
+.fc-day-today {
+  background: rgba(243, 176, 245, 0.2) !important;
+}
+
+.button {
+  background-color: rgba(238, 161, 238, 0.8);
+  outline-color: #eea1ee;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid rgba(238, 161, 238, 0.8);
+  outline-color: #eea1ee;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button1:hover {
+  background-color: rgba(238, 161, 238, 0.8);
+  color: white;
+}
+
+.contenitoreRecensioni {
+  border: 1px solid #eea1ee;
+}
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=password],
+select {
+  text-align: center;
+  border: 1px solid #eea1ee;
+  border-radius: 4px;
+  padding: 2px 0;
+}
+
+input[type=text] {
+  width: 100px;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+  border: 2px solid #eea1ee !important;
+  outline-color: #eea1ee;
+}
+
+select:focus {
+  outline: none;
+}
+
+.lineHeight {
+  line-height: 28px;
+}
+
+.lineHeight div {
+  margin-bottom: 12px;
+}
+
+.bloccoAdminImg {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  border-radius: 100%;
+  margin: 5%;
+}
+
+.bloccoAdminImg img {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media (max-width: 1600px) {
+  header {
+    color: black;
+    z-index: 99;
+    margin-bottom: 53px;
+  }
+
+  header .navbar {
+    background-color: rgba(238, 161, 238, 0.5);
+  }
+
   .container-fluid,
   .container-sm,
   .container-md,
@@ -11287,6 +11417,26 @@ footer {
 
   .cerchioTrattamento .cerchioImg:hover img {
     width: 100%;
+  }
+
+  .showTitolo {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    font-family: "great vibes";
+    font-size: 40px;
+    color: white;
+    font-size: 24px;
+    z-index: 99;
+  }
+
+  .showTarttamentoFoto {
+    display: none;
+  }
+
+  .contenitoreRecensioni {
+    border: none;
   }
 }
 

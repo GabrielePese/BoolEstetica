@@ -33,6 +33,7 @@ class HomeController extends Controller{
         ->join('users', 'service_user.user_ID', '=', 'users.id')
         -> where('service_ID', '=' , $id ) //seleziono solo dove il service_ID e' uguale all'id del servizio, quindi all servizio della show.
         -> get();
+        
 
         $votoRecensioniTotali = DB::table('service_user') // nel joi unisco la tabella user id al user_ID della tabella ponte, cioé sto entrando dalla tabella ponte nella tabella user
         -> where('service_ID', '=' , $id ) 
@@ -53,5 +54,12 @@ class HomeController extends Controller{
               return view('show', compact('service', 'recensioni', 'user', 'votoRecensioniTotali', 'quantitaRecensioni' ));
     }
 
-   
+    public function trattamenti(){
+       
+        $servizi = Service::orderBy('name', 'asc')->get();   //prende tutti ma sortati in ordine alfabvetico crescente sul nome
+
+        return view('trattamenti', compact('servizi'));
+    }
 }
+   
+

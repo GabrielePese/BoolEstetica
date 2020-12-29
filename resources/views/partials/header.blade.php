@@ -12,7 +12,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto" >
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px; color:black;"  href="{{ route('login') }}">{{ __('Trattamenti') }}</a>
+                            <a class="nav-link" style="font-size: 20px; color:black;"  href="{{ route('trattamenti') }}">{{ __('Trattamenti') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('login') }}">{{ __('Chi siamo') }}</a>

@@ -30884,7 +30884,10 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
+    height: 700,
     initialView: 'timeGridWeek',
+    slotMinTime: "08:00:00",
+    slotMaxTime: "21:00:00",
     events: '/apiCalendar'
   });
   calendar.render();
@@ -30892,12 +30895,15 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var calendaruserEl = document.getElementById('calendaruser');
   var calendaruser = new FullCalendar.Calendar(calendaruserEl, {
+    height: 700,
     themeSystem: 'bootstrap',
+    slotMinTime: "08:00:00",
+    slotMaxTime: "21:00:00",
     initialView: 'timeGridWeek',
     selectable: true,
     events: '/apiCalendar'
   });
-  console.log(calendaruser);
+  console.log('QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII ', calendaruser);
   calendaruser.render();
 }); //-------------------------------------------------------------------------------------------------------------------------------------
 
@@ -31019,6 +31025,8 @@ function notBookedHours(data, orarioAperturaMoment, orarioChiusuraMoment, ultimo
 
   for (var k = 0; k <= data.length - 1; k++) {
     // faccio -1 sennó eco dall'array
+    console.log("DATAAAAAAAAAAAAAAAAAA", data.length);
+
     if (k == 0) //se al primo giro valore trovato e'diverso dall'orario apertura (8.00)
       {
         //creo array per una sola prenotazione aggiungendo 8:00 e 19:00
@@ -31029,8 +31037,10 @@ function notBookedHours(data, orarioAperturaMoment, orarioChiusuraMoment, ultimo
         if (findedStartDate[0] !== orarioAperturaMoment) {
           var newelem = [orarioAperturaMoment, findedStartDate[0]]; //nell'array metti orario apertura e l'orario di inizio del primo appuntamento della giornata.
 
+          var newelem2 = [findedEndDate[0], i];
           console.log('DIVERSO ORARIO APERTURA', newelem);
           arrayEndStart.push(newelem);
+          arrayEndStart.push(newelem2);
         } else {
           var _newelem = [findedEndDate[0], i];
           console.log('UGUALE ORARIO APERTURA QUINDI ALLE 8', _newelem);
@@ -31096,9 +31106,7 @@ function manipolaDatiCalendario(data, durataServizio) {
         var arrayTotalBookingSliced = arrayTotalBooking.slice(0, -1); // slice toglie i valori che gli indichi dall'array. all'inzio non tolgo nulla e alla fine faccio -1, quindi lui mi toglie 18.30.              
 
         printArray(arrayTotalBookingSliced, durataServizio);
-      }
-
-    if (durataServizio == 30) {
+      } else if (durataServizio == 30) {
       printArray(arrayTotalBooking, durataServizio);
     } // se c' ALMENO UNA prenotazione------------------A SECONDA DEL TIPO E DELLA DURATA DEL SERVIZIO STAMPERA LE OPTION NECESSARIE
 
@@ -31110,9 +31118,7 @@ function manipolaDatiCalendario(data, durataServizio) {
     if (durataServizio == 60) {
       console.log('-----------------------SERVIZIO con durata 60 min-----------------------------------');
       get60MinOption(unbookedHours, durataServizio);
-    }
-
-    if (durataServizio == 30) {
+    } else if (durataServizio == 30) {
       console.log('-----------------------SERVIZIO con durata 30 min-----------------------------------');
       get30MinOption(unbookedHours, durataServizio);
     }

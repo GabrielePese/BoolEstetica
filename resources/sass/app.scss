@@ -17,6 +17,7 @@
     padding: 0;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    
   }
 
 
@@ -34,9 +35,11 @@ header{
     .navbar{
         background-color:  rgba(238, 161, 238, 0.5);
     }
+    margin-bottom: 64px;
 }
 
 main{
+    background-color: white;
     flex-grow: 1;
     
     .bootCarousTop{
@@ -134,7 +137,7 @@ main{
         flex-direction: row;
         
     }
-}
+ }
 
 
 
@@ -158,11 +161,23 @@ main{
         }
 
     }
+}
+
+
+
+
+footer{
+    background-color:  rgba(238, 161, 238, 0.5);
+    height: 80px;
+    opacity: 0.65;
+   
     
+}
+
 
        //PER IL CAROUSEL DI INSTAGRAM IN HOMEPAGE
 
-    @media (min-width: 768px) and (max-width: 991px) {
+       @media (min-width: 768px) and (max-width: 991px) {
        
         #containerPerInstagramConflittoSliderBootstrapInAlto{
         /* Show 4th slide on md if col-md-4*/
@@ -303,23 +318,11 @@ main{
             visibility: visible;
         }
     }
-}
-
-}
+ }
 
 
-footer{
-    background-color:  rgba(238, 161, 238, 0.5);
-    height: 80px;
-    opacity: 0.65;
    
-    
-}
-
-
- 
-  
-// PAAGINA PROFILO - ADMIN
+// PAGINA PROFILO - ADMIN
 
 .bloccoAdmin {
 
@@ -342,7 +345,136 @@ footer{
     }
 }
 
+// PAGINA SHOW 
+.showTitolo{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -35%);
+    font-family: 'great vibes'; font-size: 40px; color:white;
+    z-index: 99;
+    font-size: 60px;
+}
+
+
+
+.perFlex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    i,span,p{
+        font-size: 20px;
+    }
+}
+
+ .fc-day-today {  background: rgba(243, 176, 245,0.2) !important; }
+
+    .button {
+        background-color: rgba(238, 161, 238, 0.8);
+        outline-color:  rgba(238, 161, 238, 1);
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      
+      .button1 {
+          background-color: white; 
+          color: black; 
+          border: 2px solid rgba(238, 161, 238, 0.8);
+          outline-color:  rgba(238, 161, 238, 1);
+        }
+        
+        
+        .button:focus{
+          outline: none;
+        }
+
+        .button1:hover {
+            background-color: rgba(238, 161, 238, 0.8);
+            color: white;
+        }
+        
+
+.contenitoreRecensioni{
+     
+     border: 1px solid rgba(238, 161, 238, 1);
+}
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=password],
+select{
+    text-align: center;
+    border: 1px solid rgba(238, 161, 238, 1);
+    border-radius: 4px;
+    padding:2px 0;
+  }
+  input[type=text]{
+      width: 100px;
+    }
+    
+    input[type=text]:focus,
+    input[type=number]:focus,
+    input[type=email]:focus,
+    input[type=password]:focus{
+        border: 2px solid rgba(238, 161, 238, 1) !important;
+        outline-color:  rgba(238, 161, 238, 1);
+    }
+    
+    select:focus{
+        outline: none;
+        
+    }
+
+    // PARTE CREA TRATTAMENTO 
+    .lineHeight {
+        line-height: 28px;
+        div{
+        margin-bottom: 12px;
+        }
+    }
+
+    .bloccoAdminImg{
+        position: relative;
+        overflow: hidden;
+        height: 300px ;
+        border-radius: 100%;
+        margin:5%;
+        img{
+            height: 100%;
+            width: auto;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+
+//  MEDIA NOSTRE PER TUTTO IL SITO
+
 @media (max-width: 1600px) {
+
+
+    header{
+    
+        color:black;
+        z-index: 99;
+        
+        .navbar{
+            background-color:  rgba(238, 161, 238, 0.5);
+        }
+        margin-bottom: 53px;
+    }
     
     .container-fluid{
         height: auto;
@@ -409,5 +541,24 @@ footer{
         }
         
 
+    }
+
+    
+    // PARTE SHOW MEDIA
+    .showTitolo{
+        position: absolute;
+        top:18%;
+        left:50%;
+        transform: translate(-50%, -20%);
+        font-family: 'great vibes'; font-size: 40px; color:white;
+        font-size: 24px;
+        z-index: 99;
+    }
+    .showTarttamentoFoto{
+        display: none;
+    }
+    
+    .contenitoreRecensioni{
+            border: none;
     }
 }

@@ -146,7 +146,7 @@ class LoggedController extends Controller
         ->join('users', 'service_user.user_ID', '=', 'users.id')
         ->join('services', 'service_user.service_ID', '=', 'services.id')
         -> where('deleted', '=' , 0 )
-        ->select( 'services.name as title','date_start', 'date_end','users.name', 'service_user.user_ID')
+        ->select( 'services.name as title','date_start', 'date_end','users.name', 'service_user.user_ID', 'services.id as idServizio')
         -> get();
         
         foreach($recensioni as $recensione){
@@ -158,12 +158,24 @@ class LoggedController extends Controller
             
             if (Auth::user()->admin) {
                
-                $var = [
-                    'title'=> $recensione -> name,
-                    'start' => $recensione -> date_start ,
-                    'end'  => $recensione -> date_end,
-                    'color' => 'grey'
-                ];
+                if (($recensione -> idServizio) == 5) {
+                    $var = [
+                        'title'=> 'Non disponibile',
+                        'start' => $recensione -> date_start ,
+                        'end'  => $recensione -> date_end,
+    
+                        'color' => 'red'
+                    ];
+                }else {
+                    $var = [
+                        'title'=> $titolo_tot,
+                        'start' => $recensione -> date_start ,
+                        'end'  => $recensione -> date_end,
+    
+                        'color' => 'grey'
+                    ];
+                    
+                }
                 
                 
                 array_push($infoPerCalendario,$var);
@@ -173,7 +185,9 @@ class LoggedController extends Controller
                     'title' => $titolo_tot ,
                     'start' => $recensione -> date_start ,
                     'end'  => $recensione -> date_end,
-                    'color' => 'green'
+                    'color' => 'rgba(243, 206, 245, 0.8)',
+                    'textColor' => 'black'
+                    
                 ];
                
                 array_push($infoPerCalendario,$var);
@@ -182,7 +196,7 @@ class LoggedController extends Controller
                 $var = [
                     'start' => $recensione -> date_start ,
                     'end'  => $recensione -> date_end,
-                    'color' => 'blu'
+                    'color' => 'rgba(237, 161, 180, 0.4)'
                 ];
                
                 array_push($infoPerCalendario,$var);
@@ -232,6 +246,53 @@ class LoggedController extends Controller
             'deleted' => $del
         ]);
 
+        return redirect() -> route('home');
+    }
+    
+    public function impostaferieGet($id = 5){
+        $servizio = Service::findOrFail($id);
+
+        $this->apiCalendar();
+
+        $users = User::all();
+
+        return view ('prenotazione' , compact('servizio', 'users'));
+    }
+
+    public function impostaferie(Request $request, $id){
+        $data = $request -> all();
+       
+        $dataorarioInizio = $data['dataOrarioInizio'];
+        $dataorarioFine = $data['dataOrarioFine'];
+        $datagiorno =$data['datagiorno'];
+        
+        
+        // dd($data);
+        $servizio = Service::findOrFail($id);
+        $utenteID = Auth::user()-> id;
+        $utente = User::findOrFail($utenteID);
+        
+        
+        
+        
+        // $datagiorno = Carbon::parse($datagiorno);
+        // $dataorario = Carbon::parse($dataorario);
+
+        $dateInizio = $datagiorno . ' ' . $dataorarioInizio;
+        $dateFine = $datagiorno . ' ' . $dataorarioFine;
+        $date_start = Carbon::parse($dateInizio);
+        $date_end = Carbon::parse($dateFine);
+
+        
+        
+        $utente -> services()->attach($servizio, [
+
+            'date_start' => $date_start,
+            'date_end' => $date_end,
+            // 'review_vote' => $review_vote,
+            // 'review_text' => $review_text,
+            'deleted' => 0
+        ]);
         return redirect() -> route('home');
     }
 
