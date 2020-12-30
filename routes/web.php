@@ -11,6 +11,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profilo{id}', 'LoggedController@profilo')->name('profilo');
 Route::get('/chisiamo', 'HomeController@chisiamo')->name('chisiamo');
 Route::get('/contatti', 'HomeController@contatti')->name('contatti');
+Route::post('/email', 'HomeController@email')->name('email');
+
+
 Route::get('/show-tratt/{id}', 'HomeController@showTratt')->name('show-tratt');
 Route::get('/create-tratt', 'LoggedController@createTratt')->name('create-tratt');
 Route::post('/store-tratt', 'LoggedController@storeTratt')->name('store-tratt');

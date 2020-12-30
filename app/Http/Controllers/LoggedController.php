@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Post;
+
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TrattamentoPrenotato;
+use App\Mail\TrattamentoAnnullato;
 
 
 use App\Service;
 use App\ServiceUser;
 use App\User;
-use Auth;
 use Carbon\Carbon;
 class LoggedController extends Controller
 {
@@ -26,7 +32,6 @@ class LoggedController extends Controller
 
     }
 
-    
    
 
 
@@ -130,6 +135,8 @@ class LoggedController extends Controller
     {
         
         $service = Service::all();
+
+
         return view('create-tratt', compact('service'));
     }
 
@@ -138,6 +145,7 @@ class LoggedController extends Controller
         $data = $request -> all();
         $servizio = Service::create($data);
         
+
         return redirect() -> route('home');
     }
 
@@ -243,11 +251,12 @@ class LoggedController extends Controller
         $datagiorno =$data['datagiorno'];
         $user_id = $data['user_ID'];
         
-        // dd($data);
+        
         $servizio = Service::findOrFail($id);
         $utenteID = Auth::user()-> id;
         // $utente = User::findOrFail($utenteID);
         $utente = User::findOrFail($user_id);
+        $nomeUtente = $utente['name'];
         
         $durate = $servizio['duration']; //qui prendo la duration di servizio, cioe'il mio service che ho selezionato in questo 
 
@@ -258,6 +267,8 @@ class LoggedController extends Controller
 
         $date = $datagiorno . ' ' . $dataorario;
         $date_start = Carbon::parse($date);
+        
+        $orarioMail = Carbon::parse($dataorario) -> addMinutes($durate) -> format('H:i');
         
 
         $date_end = Carbon::parse($datagiorno . ' ' . $dataorario) -> addMinutes($durate); 
@@ -270,6 +281,14 @@ class LoggedController extends Controller
             // 'review_text' => $review_text,
             'deleted' => $del
         ]);
+
+        
+
+
+        Mail::to('trattamentoprenotato@amministrazione.com')
+        ->send(new TrattamentoPrenotato($utente,$datagiorno,$dataorario,$orarioMail,$servizio));
+
+       
 
         return redirect() -> route('home');
     }
@@ -322,8 +341,22 @@ class LoggedController extends Controller
     }
 
     public function annullaprenotaz($idPrenotazione){
-        $prenotazione = DB::table('service_user')-> where('service_user.id', '=', $idPrenotazione)->update(['deleted' => 1] );
-        
+
+        $dati = DB::table('service_user')
+        -> where('service_user.id', '=', $idPrenotazione)
+        ->join('users', 'service_user.user_ID', '=', 'users.id')
+        ->join('services', 'service_user.service_ID', '=', 'services.id')
+        ->select( 'services.name as title','date_start', 'date_end','users.name', 'service_user.user_ID', 'services.id as idServizio')
+        ->get();
+
+        $prenotazione = DB::table('service_user')
+        -> where('service_user.id', '=', $idPrenotazione)
+        ->update(['deleted' => 1] );
+
+            // dd($dati);
+
+        Mail::to('trattamentoannullato@amministrazione.com')
+        ->send(new TrattamentoAnnullato($dati));
         
         return redirect() -> route('home');
     }

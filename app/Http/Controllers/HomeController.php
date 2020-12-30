@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
+
 use App\ServiceUser;
 use App\Service;
 use App\Service_User;
 use App\User;
 use Phpfastcache\Helper\Psr16Adapter;
 use GuzzleHttp\Client;
+use App\Post;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserAction;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -97,16 +101,24 @@ class HomeController extends Controller{
 
 
     public function email(Request $request){
-        {
-            
-                Mail::send('emails.reminder', ['user' => 'destinatario'], function ($m){
-                $m->from('hello@app.com', 'Your Application');
-    
-                $m->to('gabrielepese@gmail.com', 'SITO')->subject('Your Reminder!');
-            });
+        $data = $request -> all();
+
+        $user = $data['txtName'];
+        $email = $data['txtEmail'];
+        $phone = $data["txtPhone"];
+        $messageOk = $data['txtMsg'];
+
+        
+
+
+        Mail::to('create@amministrazione.com')
+        ->send(new UserAction($user, $email,$phone,$messageOk));
+
+        return redirect(route('home'));
+
         }
     }
     
-}
+
    
 
