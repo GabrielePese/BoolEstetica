@@ -15,10 +15,10 @@
                             <a class="nav-link" style="font-size: 20px; color:black;"  href="{{ route('trattamenti') }}">{{ __('Trattamenti') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('login') }}">{{ __('Chi siamo') }}</a>
+                            <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('chisiamo') }}">{{ __('Chi siamo') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('login') }}">{{ __('Contatti') }}</a>
+                            <a class="nav-link" style="font-size: 20px;color:black;" href="{{ route('contatti') }}">{{ __('Contatti') }}</a>
                         </li>
                     </ul>
                     <!-- Center Side Of Navbar -->

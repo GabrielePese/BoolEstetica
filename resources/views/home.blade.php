@@ -83,7 +83,9 @@
         <div class="col-md-12 col-lg-4">
             <div class="cerchioTrattamento mx-auto">
                 <div class="cerchioImg">
-                    <img src="{{ asset('/img/tondino.jpg') }}" alt="1">
+                    <a href="{{route('trattamentiRelax')}}">
+                        <img src="{{ asset('/img/tondino.jpg') }}" alt="1">
+                    </a>
                 </div>
                 <div class="text-center">
                     <h4>Relax</h4>
@@ -96,7 +98,9 @@
         <div class="col-md-12 col-lg-4">
             <div class="cerchioTrattamento mx-auto">
                 <div class="cerchioImg">
+                    <a href="{{route('trattamentiEstetica')}}">
                     <img src="{{ asset('/img/tondino2.jpg') }}" alt="1">
+                    </a>
                 </div>
                 <div class="text-center">
                     <h4>Estetica</h4>
@@ -109,7 +113,9 @@
         <div class="col-md-12 col-lg-4">
             <div class="cerchioTrattamento mx-auto">
                 <div class="cerchioImg">
+                    <a href="{{route('trattamentiDeco')}}">
                     <img src="{{ asset('/img/tondino3.jpg') }}" alt="1">
+                    </a>
                 </div>
                 <div class="text-center">
                     <h4>Decontratturanti</h4>

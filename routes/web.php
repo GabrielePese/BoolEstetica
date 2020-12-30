@@ -9,6 +9,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profilo{id}', 'LoggedController@profilo')->name('profilo');
+Route::get('/chisiamo', 'HomeController@chisiamo')->name('chisiamo');
+Route::get('/contatti', 'HomeController@contatti')->name('contatti');
 Route::get('/show-tratt/{id}', 'HomeController@showTratt')->name('show-tratt');
 Route::get('/create-tratt', 'LoggedController@createTratt')->name('create-tratt');
 Route::post('/store-tratt', 'LoggedController@storeTratt')->name('store-tratt');
@@ -41,3 +43,6 @@ Route::get('/apiStatistiche/{idUtenteSelezionato}', 'LoggedController@apiStatist
 Route::get('/apiFatturatoMeseChart', 'LoggedController@fatturatoMeseChart') -> name('fatturatoMeseChart');
 
 Route::get('/trattamenti', 'HomeController@trattamenti')-> name ('trattamenti');
+Route::get('/trattamentiRelax', 'HomeController@trattamentiRelax')-> name ('trattamentiRelax');
+Route::get('/trattamentiEstetica', 'HomeController@trattamentiEstetica')-> name ('trattamentiEstetica');
+Route::get('/trattamentiDeco', 'HomeController@trattamentiDeco')-> name ('trattamentiDeco');

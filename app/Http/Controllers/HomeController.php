@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\ServiceUser;
 use App\Service;
 use App\Service_User;
@@ -23,6 +24,10 @@ class HomeController extends Controller{
         $service = Service::all();
         
         return view('home', compact('service', 'user' ));
+    }
+
+    public function chisiamo(){
+        return view ('chisiamo');
     }
 
     public function showTratt($id){
@@ -60,6 +65,48 @@ class HomeController extends Controller{
 
         return view('trattamenti', compact('servizi'));
     }
+
+
+    public function trattamentiRelax (){
+        $trattamentiRelax =  DB::table('services')
+        -> where('type', '=' , 'Relax')
+        ->get();
+
+        return view('trattamentiRelax', compact('trattamentiRelax'));
+    }
+
+    public function trattamentiEstetica (){
+        $trattamentiEstetica =  DB::table('services')
+        -> where('type', '=' , 'Estetica')
+        ->get();
+
+        return view('trattamentiEstetica', compact('trattamentiEstetica'));
+    }
+
+    public function trattamentiDeco (){
+        $trattamentiDeco =  DB::table('services')
+        -> where('type', '=' , 'Decontratturanti')
+        ->get();
+
+        return view('trattamentiDeco', compact('trattamentiDeco'));
+    }
+
+    public function contatti(){
+        return view('contatti');
+    }
+
+
+    public function email(Request $request){
+        {
+            
+                Mail::send('emails.reminder', ['user' => 'destinatario'], function ($m){
+                $m->from('hello@app.com', 'Your Application');
+    
+                $m->to('gabrielepese@gmail.com', 'SITO')->subject('Your Reminder!');
+            });
+        }
+    }
+    
 }
    
 
