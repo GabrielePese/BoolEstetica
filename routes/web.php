@@ -27,3 +27,7 @@ Route::post('/anuullaapp/{id}', 'LoggedController@annullaprenotaz')-> name ('anu
 Route::get('/APIcalendar', 'LoggedController@APIcalendar')-> name ('APIcalendar');
 
 // Route::get('/APIcalendarioData', 'LoggedController@APIcalendarioData') -> name('APIcalendarioData');
+
+
+
+// prova
