@@ -49,3 +49,6 @@ Route::get('/trattamenti', 'HomeController@trattamenti')-> name ('trattamenti');
 Route::get('/trattamentiRelax', 'HomeController@trattamentiRelax')-> name ('trattamentiRelax');
 Route::get('/trattamentiEstetica', 'HomeController@trattamentiEstetica')-> name ('trattamentiEstetica');
 Route::get('/trattamentiDeco', 'HomeController@trattamentiDeco')-> name ('trattamentiDeco');
+
+
+// prova
