@@ -141,8 +141,8 @@
                     <img src="{{ asset('/img/slide1.1.jpg') }}" alt="1">
                 </div>
                 <div class="text-center">
-                    <h4>Massaggio Relax</h4>
-                    <h4> 30 Minuti - 60€ </h4>
+                    <h6>Massaggio Relax</h6>
+                    <h6> 30 Minuti - 60€ </h6>
                 </div>
             </div>
         </div>
@@ -152,8 +152,8 @@
                     <img src="{{ asset('/img/slide1.2.jpg') }}" alt="1">
                 </div>
                 <div class="text-center">
-                    <h4>Massaggio Relax</h4>
-                    <h4> 30 Minuti - 60€ </h4>
+                    <h6>Massaggio Relax</h6>
+                    <h6> 30 Minuti - 60€ </h6>
                 </div>
             </div>
         </div>
@@ -163,8 +163,8 @@
                     <img src="{{ asset('/img/slide3.1.jpg') }}" alt="1">
                 </div>
                 <div class="text-center">
-                    <h4>Massaggio Relax</h4>
-                    <h4> 30 Minuti - 60€ </h4>
+                    <h6>Massaggio Relax</h6>
+                    <h6> 30 Minuti - 60€ </h6>
                 </div>
             </div>
         </div>
@@ -174,8 +174,8 @@
                     <img src="{{ asset('/img/slide3.2.jpg') }}" alt="1">
                 </div>
                 <div class="text-center">
-                    <h4>Massaggio Relax</h4>
-                    <h4> 30 Minuti - 60€ </h4>
+                    <h6>Massaggio Relax</h6>
+                    <h6> 30 Minuti - 60€ </h6>
                 </div>
             </div>
         </div>
@@ -185,8 +185,8 @@
                     <img src="{{ asset('/img/slide3.3.jpg') }}" alt="1">
                 </div>
                 <div class="text-center">
-                    <h4>Massaggio Relax</h4>
-                    <h4> 30 Minuti - 60€ </h4>
+                    <h6>Massaggio Relax</h6>
+                    <h6> 30 Minuti - 60€ </h6>
                 </div>
             </div>
         </div>
@@ -196,8 +196,8 @@
                     <img src="{{ asset('/img/slide5.1.jpg') }}" alt="1">
                 </div>
                 <div class="text-center">
-                    <h4>Massaggio Relax</h4>
-                    <h4> 30 Minuti - 60€ </h4>
+                    <h6>Massaggio Relax</h6>
+                    <h6> 30 Minuti - 60€ </h6>
                 </div>
             </div>
         </div>
