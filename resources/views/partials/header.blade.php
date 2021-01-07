@@ -1,7 +1,7 @@
 <header>
 
     
-        <nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm">
+        <nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm mb-5">
             <div class="container">
                 
                 <button class="navbar-toggler ml-auto" type="button" style="color:black;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -11,6 +11,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto" >
+                        <li class="logoMobile">
+                            <a class="navbar-brand" href="{{ url('/') }}" ><img src="{{asset('img/esteticaLogo.png')}}" alt="logo" style="height: 80px; width:100px; overflow:hideen;"> </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" style="font-size: 20px; color:black;"  href="{{ route('trattamenti') }}">{{ __('Trattamenti') }}</a>
                         </li>
@@ -23,10 +26,8 @@
                     </ul>
                     <!-- Center Side Of Navbar -->
                     <ul class="navbar-nav mx-auto">
-                        <li>
-                            <a class="navbar-brand" href="{{ url('/') }}">
-                                {{ config('app.name', 'Laravel') }}
-                            </a>
+                        <li class="logo">
+                            <a class="navbar-brand" href="{{ url('/') }}" ><img src="{{asset('img/esteticaLogo.png')}}" alt="logo" style="height: 80px; width:100px; overflow:hideen;"> </a>
                         </li>
                     </ul>
 

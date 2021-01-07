@@ -10931,9 +10931,25 @@ header .navbar {
   background-color: rgba(238, 161, 238, 0.5);
 }
 
+header .logoMobile {
+  display: none;
+}
+
 main {
+  margin-top: 2.6rem !important;
   background-color: white;
   flex-grow: 1;
+}
+
+main .flex {
+  display: flex;
+  align-items: center;
+}
+
+main .flex i .fas,
+main .flex i .far {
+  height: 30px;
+  width: auto;
 }
 
 main .bootCarousTop {
@@ -10976,6 +10992,15 @@ main .bootCarousTop .bloccoBiancoJambo {
   border-radius: 10px;
   outline: 1px dashed #fff;
   outline-offset: -10px;
+}
+
+main .bootCarousTop .bloccoBiancoJambo .descrizioneTitoloBianco {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 main .bootCarousTop h2 {
@@ -11359,6 +11384,19 @@ select:focus {
   transform: translate(-50%, -50%);
 }
 
+.mappa {
+  width: 100%;
+}
+
+.mappa iframe {
+  overflow: hidden;
+}
+
+.contattiInfo {
+  text-align: none;
+  padding-left: 60px;
+}
+
 .bottoneContact {
   margin-left: 150px;
 }
@@ -11380,9 +11418,8 @@ select:focus {
 
 .contact-image img {
   border-radius: 6rem;
-  width: 11%;
+  width: 25%;
   margin-top: -3%;
-  transform: rotate(29deg);
 }
 
 .contact-form form {
@@ -11422,6 +11459,10 @@ select:focus {
 }
 
 @media (max-width: 1600px) {
+  main {
+    margin-top: 0rem !important;
+  }
+
   header {
     color: black;
     z-index: 99;
@@ -11527,6 +11568,23 @@ select:focus {
 
   .contenitoreRecensioni {
     border: none;
+  }
+
+  .contattiInfo {
+    text-align: center !important;
+    margin-top: 30px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .logoMobile {
+    display: block !important;
+  }
+
+  nav ul .logoMobile {
+    margin: 0 40%;
   }
 }
 

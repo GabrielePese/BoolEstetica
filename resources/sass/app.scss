@@ -39,11 +39,30 @@ header{
         background-color:  rgba(238, 161, 238, 0.5);
     }
     margin-bottom: 64px;
+
+
+    .logoMobile{
+        display: none;
+    }
 }
 
 main{
+    margin-top: 2.6rem !important;
     background-color: white;
     flex-grow: 1;
+
+
+    .flex{
+display: flex;
+align-items: center;
+i{
+    .fas,
+    .far{
+        height: 30px;
+        width: auto;
+    }
+}
+    }
     
     .bootCarousTop{
         height: 100vh;
@@ -67,6 +86,7 @@ main{
         }
 
         .bloccoBiancoJambo{
+           
             display: flex;
             justify-content: center;
             align-items: center;
@@ -85,6 +105,13 @@ main{
             outline: 1px dashed #fff;
             outline-offset: -10px;
             
+            .descrizioneTitoloBianco{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3; /* number of lines to show */
+                -webkit-box-orient: vertical;
+            }
         }
         
         h2{
@@ -485,6 +512,20 @@ select{
 
 
         //PARTE CONTATTACTI
+
+        .mappa{
+            width: 100%;
+            iframe{
+                overflow: hidden;
+            }
+        }
+
+
+        .contattiInfo{
+            text-align: none;
+            padding-left: 60px;             
+        }
+
 .bottoneContact{
     margin-left:150px;
 }
@@ -504,9 +545,9 @@ select{
 }
 .contact-image img{
     border-radius: 6rem;
-    width: 11%;
+    width: 25%;
     margin-top: -3%;
-    transform: rotate(29deg);
+   
 }
 .contact-form form{
     padding: 14%;
@@ -540,12 +581,16 @@ select{
     border: none;
     cursor: pointer;
 }
+
+
     
 
 //  MEDIA X CELULLARE NOSTRE PER TUTTO IL SITO 
 
 @media (max-width: 1600px) {
-
+    main{
+     margin-top: 0rem !important;
+    }
 
     header{
     
@@ -650,4 +695,24 @@ select{
     .contenitoreRecensioni{
             border: none;
     }
+
+
+    .contattiInfo{
+        text-align: center !important;
+        margin-top: 30px;
+    }
+
+
+    .logo{
+        display: none;
+    }
+
+    .logoMobile{
+        display: block !important;
+    }
+
+    nav ul .logoMobile{
+        margin:0 40%;
+    }
+    
 }

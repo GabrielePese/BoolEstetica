@@ -5,7 +5,7 @@
 @auth
 
 @if (Auth::user()->admin)
-   <form action="{{route('store-tratt')}}" method="post"> 
+   <form action="{{route('store-tratt')}}" method="post" enctype="multipart/form-data"> 
     @csrf
     @method('post')
     <div class="container">
@@ -55,9 +55,11 @@
                      
                      
                      <div>
-                         <label for="photo" style="width: 30%"> Foto </label>
-                         <input type="text" name="photo" value="" style="width: 60%">
+                         <label for="photo" style="width: 30%"> Foto </label>                              {{-- il for e il name devono essere il nome della colonna del DB --}}
+                         {{-- <input type="text" name="photo" value="" style="width: 60%">                         QUI VECCHIA VERSIONE CON INSERIMENTO URL--}}  
+                         <input id="photo" type="file" name="photo" value="" style="width: 60%">  
                      </div>
+
                      
                      <div>
                          <label for="video" style="width: 30%"> Video </label>

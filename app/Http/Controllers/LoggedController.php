@@ -6,7 +6,9 @@ use App\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Post;
-
+use App\Photo;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -141,12 +143,42 @@ class LoggedController extends Controller
     }
 
 
-    public function storeTratt(Request $request ){
-        $data = $request -> all();
-        $servizio = Service::create($data);
+    public function storeTratt(Request $request){
         
+        $data = $request -> all();
+        
+        $data = $request -> validate([
+            'name' => ['required', 'string', 'min:2', 'max:80'],
+            'description' => ['required', 'string', 'min:2', 'max:500'],
+            'type' => 'required',
+            'duration' => 'required',
+            'price' => 'required',
+            'originalprice' => 'required',
+            'photo' => 'required|image|mimes:JPG,jpeg,png,jpg,webp',
+            'video' => 'integer',
+            'promotion' => 'integer',
+            'disabled' => 'integer',
+            'delete' => 'integer',
+            ]);
+            
+            $imagePath = $request-> photo;
+            // prendo solo in nome originale
+            $imageName = $imagePath->getClientOriginalName();
+            // creo una variabile con dentro le info per per il savataggio e faccio il prepend della data attuale in secondi per evitare conflitti nel nome
+            $filePath = $request-> photo ->storeAs('images', $imageName, 'public');
+            // aggiungo la stringa del percorso /storage/ da aggiungere al DB
+            $data['photo'] = '/storage/'.$filePath;
+        
+            
+           
+       Service::create($data);
 
-        return redirect() -> route('home');
+        return redirect()->route('home') -> with('status', 'Nuovo Trattamento Creato!!!');
+
+      
+     
+
+      
     }
 
 

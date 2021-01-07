@@ -13,7 +13,7 @@
     @auth
         @if(Auth::user()->admin)
             {{-- questa parte la vedere il proprietario --}}
-            CIAO admin
+            
         @else
 
         @endif
@@ -48,7 +48,7 @@
                                     <div class="bloccoBiancoJambo text-center ">
                                     <h2>{{ $ser-> name }}</h2>
                                     
-                                    <h5>{{ $ser-> description }}</h5>
+                                    <div class="descrizioneTitoloBianco"> <h5>{{ $ser-> description }}</h5> </div>
                                     </div>
                             </a>
                         </div>
@@ -198,6 +198,7 @@
                 <div class="text-center">
                     <h6>Massaggio Relax</h6>
                     <h6> 30 Minuti - 60€ </h6>
+
                 </div>
             </div>
         </div>
@@ -236,7 +237,7 @@
 </div>
 
 <div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic similique aliquid sed labore! Repellat incidunt non minus accusantium consectetur ratione perferendis, corporis, impedit modi temporibus sequi in iste qui quas.
+
 </div>
 
 

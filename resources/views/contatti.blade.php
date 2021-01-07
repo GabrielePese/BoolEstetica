@@ -9,17 +9,24 @@
 
         </div>
     </div>
-    <div class="row">
-      <div class="col-6">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26464.7166304507!2d10.054343518973639!3d45.79602232326587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x984ab95657aa5cca!2sEstetica%20DeA!5e0!3m2!1sit!2sit!4v1609344692098!5m2!1sit!2sit" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <div class="row flex">
+      <div class="col-md-12 col-lg-6 mappa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.1765177606385!2d10.058733215775332!3d45.80772311847602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4783dec50d56e655%3A0x984ab95657aa5cca!2sEstetica%20DeA!5e0!3m2!1sit!2sit!4v1609868435869!5m2!1sit!2sit" width="100%" height="425" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>     
       </div>
+        <div class="col-md-12 col-lg-6 contattiInfo">
+        <p><i class="fas fa-phone-square-alt"></i> 343 3874657</p>
+        <p><i class="fas fa-map-marker-alt"></i> Via provinciale 2 Lovere</p>
+        <p><i class="far fa-envelope"></i> esteticadea@gmasil.com</p>
+        <p><i class="fas fa-clock"></i> Mar - Sab 8.00 - 19.00</p>
+      </div>
+
     </div>
 
     <div class="row">
         <div class="col-8 mx-auto text-center contact-form">
             
             <div class="contact-image">
-                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+                <img src="{{asset('img/esteticaLogo.png')}}" alt="rocket_contact"/>
             </div>
             <form action="{{route('email')}}" method="post">
                @csrf
