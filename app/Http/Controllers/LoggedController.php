@@ -317,8 +317,8 @@ class LoggedController extends Controller
         
 
 
-        Mail::to('trattamentoprenotato@amministrazione.com')
-        ->send(new TrattamentoPrenotato($utente,$datagiorno,$dataorario,$orarioMail,$servizio));
+        // Mail::to('trattamentoprenotato@amministrazione.com')
+        // ->send(new TrattamentoPrenotato($utente,$datagiorno,$dataorario,$orarioMail,$servizio));
 
        
 
@@ -387,8 +387,8 @@ class LoggedController extends Controller
 
             // dd($dati);
 
-        Mail::to('trattamentoannullato@amministrazione.com')
-        ->send(new TrattamentoAnnullato($dati));
+        // Mail::to('trattamentoannullato@amministrazione.com')
+        // ->send(new TrattamentoAnnullato($dati));
         
         return redirect() -> route('home');
     }
