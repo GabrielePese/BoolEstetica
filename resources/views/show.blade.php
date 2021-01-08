@@ -30,6 +30,8 @@
     <div class="row">
         <div class="col-md-12 text-center prenotaSubito mb-5">
             <a href="{{ route('prenota', $service -> id, ) }}"><button class="button button1"> Prenota Subito</button></a>
+            <a href="{{ route('promo', $service -> id, ) }}"><button class="button button1"> Metti in Promozione</button></a>
+            
         </div>
     </div>
 </div>
