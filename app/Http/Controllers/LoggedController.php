@@ -165,7 +165,7 @@ class LoggedController extends Controller
             // prendo solo in nome originale
             $imageName = $imagePath->getClientOriginalName();
             // creo una variabile con dentro le info per per il savataggio e faccio il prepend della data attuale in secondi per evitare conflitti nel nome
-            $filePath = $request-> photo ->storeAs('images', $imageName, 'public');
+            $filePath = $request-> photo ->storeAs('images', $imageName, 's3');
             // aggiungo la stringa del percorso /storage/ da aggiungere al DB
             $data['photo'] = '/storage/'.$filePath;
         
