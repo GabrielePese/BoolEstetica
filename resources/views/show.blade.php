@@ -30,7 +30,16 @@
     <div class="row">
         <div class="col-md-12 text-center prenotaSubito mb-5">
             <a href="{{ route('prenota', $service -> id, ) }}"><button class="button button1"> Prenota Subito</button></a>
+
+            @auth
+            @if(Auth::user()->admin)
             <a href="{{ route('promo', $service -> id, ) }}"><button class="button button1"> Metti in Promozione</button></a>
+                {{-- questa parte la vedere il proprietario --}}
+                
+            
+    
+            @endif
+        @endauth
             
         </div>
     </div>
