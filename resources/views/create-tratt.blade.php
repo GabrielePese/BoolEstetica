@@ -36,8 +36,13 @@
                             </select>
                         </div>
                      <div>
-                         <label for="duration" style="width: 30%"> Durata </label>
-                         <input type="text" name="duration"  value="" style="width: 60%">
+
+                        <select name="duration" id="">
+                            <option value="30">30</option>
+                            <option value="60">60</option>
+                        </select>
+                         {{-- <label for="duration" style="width: 30%"> Durata </label>
+                         <input type="text" name="duration"  value="" style="width: 60%"> --}}
                          
                       
                      </div>
