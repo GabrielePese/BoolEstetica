@@ -37,7 +37,7 @@
                         </div>
                      <div>
                         <label for="duration" style="width: 30%"> Durata </label>
-                        <select name="duration" id="">
+                        <select name="duration" id="" style="width: 60%">
                             <option value="30">30</option>
                             <option value="60">60</option>
                         </select>
