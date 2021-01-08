@@ -43,7 +43,7 @@
                     @else
                         <div class="carousel-item bootCarousTop col-12">
                             <a href="{{ route("show-tratt", $ser -> id) }}">
-                                <img class="d-block" src="{{ $ser-> photo }}" alt="{{ $ser-> photo }}">
+                                <img class="d-block" src="https://boolestetica-laravel.s3.eu-central-1.amazonaws.com/images/slide3.3.jpg" alt="{{ $ser-> photo }}">
 
                                     <div class="bloccoBiancoJambo text-center ">
                                     <h2>{{ $ser-> name }}</h2>
