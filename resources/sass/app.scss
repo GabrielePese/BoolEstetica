@@ -590,7 +590,7 @@ select{
 @media (max-width: 767px) {
     main{
      margin-top: 0rem !important;
-     background-color: red;
+    
     }
 
     header{
@@ -615,7 +615,7 @@ select{
 
     .bootCarousTop a img{
         position:absolute;
-        top:0;
+        top:69px;
         left:0;
         width:100%;
         height:100vh;
@@ -709,8 +709,11 @@ select{
     }
 
     .logoMobile{
-        display: block !important;
+         display: block !important;
+        
     }
+
+   
 
     nav ul .logoMobile{
         margin:0 40%;
