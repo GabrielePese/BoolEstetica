@@ -1,3 +1,4 @@
+const { toSafeInteger } = require('lodash');
 
 require('./bootstrap');
 
@@ -234,6 +235,10 @@ function checkStelle(){
 
 
 function init(){
+  var target = $('#hamburgerMenu');
+  target.on('click', function (){
+    var classeOpacita = $('.bootCarousTop').toggleClass("opacit")
+  });
 
 
   checkStelle();

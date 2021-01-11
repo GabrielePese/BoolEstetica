@@ -11,13 +11,13 @@
                 </ul>
 
 
-                <button class="navbar-toggler ml-auto" type="button" style="color:black;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler ml-auto" type="button" id="hamburgerMenu" style="color:black;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span style="color:black;" class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto" >
+                    <ul class="navbar-nav mr-auto scritteMenu" >
                         {{-- <li class="logoMobile">
                             <a class="navbar-brand" href="{{ url('/') }}" ><img src="{{asset('img/esteticaLogo.png')}}" alt="logo" style="height: 80px; width:100px; overflow:hideen;"> </a>
                         </li> --}}
@@ -39,7 +39,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto scritteMenu">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

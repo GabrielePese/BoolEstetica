@@ -31,14 +31,14 @@ body{
 }
 
 header{
-    
+    height: 150px;
     color:black;
     z-index: 99;
     
     .navbar{
-        background-color:  rgba(238, 161, 238, 0.5);
+        background-color:  rgba(238, 161, 238, 0.7);
     }
-    margin-bottom: 64px;
+    margin-bottom: 69px;
 
 
     .logoMobile{
@@ -47,10 +47,13 @@ header{
 }
 
 main{
+
+
     margin-top: 2.6rem !important;
     background-color: white;
     flex-grow: 1;
 
+ 
 
     .flex{
 display: flex;
@@ -77,12 +80,14 @@ i{
             width: 100%;
         }
         img{
-            width:100%;
-            height:auto;
+            width:100vw;
+            height:100vh;
             position: absolute;
-            top:50%;
-            left:50%;
-            transform: translate(-50%, -50%);
+            top:0;
+            left:0;
+            object-fit: cover;
+            // left:50%;
+            // transform: translate(-50%, -50%);
         }
 
         .bloccoBiancoJambo{
@@ -599,10 +604,17 @@ select{
         z-index: 99;
         
         .navbar{
-            background-color:  rgba(238, 161, 238, 0.5);
+            background-color:  rgba(238, 161, 238, 0.7);
         }
         margin-bottom: 53px;
+
+        .scritteMenu{
+            text-align: center;
+            padding-top: 20px;
+        }
     }
+
+  
     
     .container-fluid{
         height: auto;
@@ -717,6 +729,10 @@ select{
 
     nav ul .logoMobile{
         margin:0 40%;
+    }
+
+    .opacit{
+        opacity: 0.3;
     }
     
 }

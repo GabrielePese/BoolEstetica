@@ -49531,6 +49531,9 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    toSafeInteger = _require.toSafeInteger;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49685,6 +49688,10 @@ function checkStelle() {
 }
 
 function init() {
+  var target = $('#hamburgerMenu');
+  target.on('click', function () {
+    var classeOpacita = $('.bootCarousTop').toggleClass("opacit");
+  });
   checkStelle();
   apiStatisticheAnno();
   $('[data-mirror]').on('change keyup paste', function () {

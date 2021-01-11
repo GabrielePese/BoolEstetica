@@ -10922,13 +10922,14 @@ body {
 }
 
 header {
+  height: 150px;
   color: black;
   z-index: 99;
-  margin-bottom: 64px;
+  margin-bottom: 69px;
 }
 
 header .navbar {
-  background-color: rgba(238, 161, 238, 0.5);
+  background-color: rgba(238, 161, 238, 0.7);
 }
 
 header .logoMobile {
@@ -10966,12 +10967,13 @@ main .bootCarousTop a {
 }
 
 main .bootCarousTop img {
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main .bootCarousTop .bloccoBiancoJambo {
@@ -11470,7 +11472,12 @@ select:focus {
   }
 
   header .navbar {
-    background-color: rgba(238, 161, 238, 0.5);
+    background-color: rgba(238, 161, 238, 0.7);
+  }
+
+  header .scritteMenu {
+    text-align: center;
+    padding-top: 20px;
   }
 
   .container-fluid,
@@ -11585,6 +11592,10 @@ select:focus {
 
   nav ul .logoMobile {
     margin: 0 40%;
+  }
+
+  .opacit {
+    opacity: 0.3;
   }
 }
 
