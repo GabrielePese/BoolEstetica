@@ -21,7 +21,7 @@
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" >
-            @foreach($service as $key => $ser)
+            @foreach($servicePromoCarousel as $key => $ser)
                 @if($ser -> disabled || $ser -> delete || $ser -> id == 1)
                 @else
 
