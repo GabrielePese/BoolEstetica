@@ -11458,9 +11458,10 @@ select:focus {
   cursor: pointer;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 767px) {
   main {
     margin-top: 0rem !important;
+    background-color: red;
   }
 
   header {
