@@ -27,6 +27,7 @@ class HomeController extends Controller{
         $user = User::all();
         $service = DB::table('services')
          ->where ( 'promotion' , '=', '1' )
+         ->orderBy('id', 'asc')
          ->get();
         
         $serviceAll = Service::all() ->where ( 'promotion' , '=', '1' );
