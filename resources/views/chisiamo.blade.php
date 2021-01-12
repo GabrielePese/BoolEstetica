@@ -20,7 +20,7 @@
                  <img src="https://i.ibb.co/pzyGKC2/estetista-1728x800-c.jpg" alt="foto1">
              </div>
         </div>
-        <div class=".col-12 col-md-6">
+        <div class=".col-12 col-md-6 text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates accusamus, ex pariatur iusto aliquam, dolores atque vel laborum ipsa eum qui voluptatibus ut? Magni a enim perspiciatis. Repudiandae, iusto odit.
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, temporibus voluptatibus expedita omnis est nostrum sint deserunt neque? Alias atque maiores praesentium quasi incidunt. Inventore accusantium nobis illum. Sint, quidem?
         </div>
@@ -32,7 +32,7 @@
           </div>
     </div>
     <div class="row my-5">
-        <div class=".col-12 col-md-6 mb-5">
+        <div class=".col-12 col-md-6 mb-5 text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates accusamus, ex pariatur iusto aliquam, dolores atque vel laborum ipsa eum qui voluptatibus ut? Magni a enim perspiciatis. Repudiandae, iusto odit.
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, temporibus voluptatibus expedita omnis est nostrum sint deserunt neque? Alias atque maiores praesentium quasi incidunt. Inventore accusantium nobis illum. Sint, quidem?
         </div>
