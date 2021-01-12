@@ -11564,9 +11564,8 @@ select:focus {
 
   .showTitolo {
     position: absolute;
-    top: 18%;
+    top: 200px;
     left: 50%;
-    transform: translate(-50%, -20%);
     font-family: "great vibes";
     font-size: 40px;
     color: white;
