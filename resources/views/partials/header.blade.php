@@ -17,7 +17,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto scritteMenu" >
+                    <ul class="navbar-nav scritteMenu" >
                         {{-- <li class="logoMobile">
                             <a class="navbar-brand" href="{{ url('/') }}" ><img src="{{asset('img/esteticaLogo.png')}}" alt="logo" style="height: 80px; width:100px; overflow:hideen;"> </a>
                         </li> --}}

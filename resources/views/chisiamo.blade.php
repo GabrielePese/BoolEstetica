@@ -26,12 +26,12 @@
         </div>
     </div>
 
-    <div class="row d-flex align-items-center">
+    <div class="row ">
         <div class="col-8 mx-auto">
             <h2 class="text-center">Antonella</h2>
           </div>
     </div>
-    <div class="row my-5">
+    <div class="row my-5 d-flex align-items-center">
         <div class=".col-12 col-md-6 mb-5 text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates accusamus, ex pariatur iusto aliquam, dolores atque vel laborum ipsa eum qui voluptatibus ut? Magni a enim perspiciatis. Repudiandae, iusto odit.
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, temporibus voluptatibus expedita omnis est nostrum sint deserunt neque? Alias atque maiores praesentium quasi incidunt. Inventore accusantium nobis illum. Sint, quidem?
