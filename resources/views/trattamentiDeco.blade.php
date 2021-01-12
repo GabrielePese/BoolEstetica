@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="col-8 mx-auto mb-5 chisiamo">
+    <div class="col-lg-8 mx-auto mb-5 chisiamo">
         <h1 class="text-center" style="font-family: 'great vibes'; font-size: 65px;">Trattamenti Decontratturanti</h1>
 
     </div>
