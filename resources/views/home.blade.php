@@ -23,7 +23,7 @@
         <div class="carousel-inner" >
             @foreach($serviceAll as $key => $ser)
                 @if($ser -> disabled || $ser -> delete || $ser -> id == 1)
-                
+                entro nel primo if
                 @else
 
 
