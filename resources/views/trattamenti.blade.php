@@ -13,7 +13,7 @@
         
             @else 
             <a href="{{route('show-tratt', $servizio -> id)}}" style="color: black;" >
-            <div class="col-md-12 col-md-4 bloccoAdmin mb-4">
+            <div class="col-md-12 col-md-4 bloccoAdmin mb-4 mt-5">
                     <div class="bloccoAdminImg">
                         <img src="{{$servizio -> photo}}" alt="">
     
