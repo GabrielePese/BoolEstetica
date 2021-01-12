@@ -28,8 +28,8 @@ class HomeController extends Controller{
  
         $user = User::all();
         $service = DB::table('services')
+        ->orderBy('id', 'asc')
          ->where ( 'promotion' , '=', '1' )
-         ->orderBy('ID', 'ASC')
          ->get();
         
         $serviceAll = Service::all() ->where ( 'promotion' , '=', '1' );
