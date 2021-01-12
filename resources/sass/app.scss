@@ -482,9 +482,10 @@ select{
     .bloccoAdminImg{
         position: relative;
         overflow: hidden;
-        height: 300px ;
+        height: 450px ;
+        width: 450px ;
         border-radius: 100%;
-        margin:5%;
+        margin:0 auto%;
         img{
             height: 100%;
             width: auto;
@@ -738,4 +739,21 @@ select{
         margin-top: 122px;
     }
     
+
+    .bloccoAdminImg{
+        position: relative;
+        overflow: hidden;
+        height: 300px ;
+        width: 300px ;
+        border-radius: 100%;
+        margin:0 auto%;
+        img{
+            height: 100%;
+            width: auto;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+    }
 }
