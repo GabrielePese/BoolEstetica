@@ -136,7 +136,7 @@
     <div class="row">
 
 
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 mb-5">
             <div class="quadratoTrattamento mx-auto">
                 <div class="quadratoImg">
                     <img src="{{ asset('/img/slide1.1.jpg') }}" alt="1">
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 mb-5">
             <div class="quadratoTrattamento mx-auto">
                 <div class="quadratoImg">
                     <img src="{{ asset('/img/slide1.2.jpg') }}" alt="1">
@@ -158,7 +158,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 mb-5">
             <div class="quadratoTrattamento mx-auto">
                 <div class="quadratoImg">
                     <img src="{{ asset('/img/slide3.1.jpg') }}" alt="1">
@@ -169,7 +169,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 mb-5">
             <div class="quadratoTrattamento mx-auto">
                 <div class="quadratoImg">
                     <img src="{{ asset('/img/slide3.2.jpg') }}" alt="1">
@@ -180,7 +180,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 mb-5">
             <div class="quadratoTrattamento mx-auto">
                 <div class="quadratoImg">
                     <img src="{{ asset('/img/slide3.3.jpg') }}" alt="1">
@@ -191,7 +191,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 mb-5">
             <div class="quadratoTrattamento mx-auto">
                 <div class="quadratoImg">
                     <img src="{{ asset('/img/slide5.1.jpg') }}" alt="1">
