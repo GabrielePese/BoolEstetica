@@ -5,6 +5,8 @@
 @section('content')
 <div class="container">
     <div class="row my-5">
+
+        bla bla bla
            @foreach ($servizi as $servizio)
         
             @if ($servizio -> delete  || $servizio -> disabled || $servizio -> id == 1)
