@@ -4,18 +4,18 @@
 
 @section('content')
 <div class="container">
-    <div class="col-8 mx-auto my-5">
+    <div class="col-lg-8 mx-auto my-5">
         <h1 class="text-center" style="font-family: 'great vibes'; font-size: 65px;">Trattamenti Estetici</h1>
 
     </div>
-    <div class="row my-5">
+    <div class="row my-5 mx-auto">
            @foreach ($trattamentiEstetica as $servizio)
         
             @if ($servizio -> delete  || $servizio -> disabled || $servizio -> id == 1)
         
             @else 
             <a href="{{route('show-tratt', $servizio -> id)}}" style="color: black;" >
-            <div class="col-12 col-md-4 bloccoAdmin mb-4">
+            <div class="col-md-12 col-lg-4 bloccoAdmin mb-4 mx-auto">
                     <div class="bloccoAdminImg">
                         <img src="{{$servizio -> photo}}" alt="">
     
@@ -28,7 +28,7 @@
                     {{$servizio -> description}} 
                 </div>     
             </a>
-                </div>    
+        </div>    
             @endif
         
             @endforeach

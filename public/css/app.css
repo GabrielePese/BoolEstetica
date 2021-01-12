@@ -11387,6 +11387,10 @@ select:focus {
   transform: translate(-50%, -50%);
 }
 
+.chisiamo {
+  margin-top: 50px;
+}
+
 .mappa {
   width: 100%;
 }
