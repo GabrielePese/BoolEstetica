@@ -42,7 +42,9 @@
         @include('partials.header')
         
             <main>
-                @yield('content')
+                <div class="bloccoOpaco">
+                    @yield('content')
+                </div>
             </main>
     
         @include('partials.footer')
