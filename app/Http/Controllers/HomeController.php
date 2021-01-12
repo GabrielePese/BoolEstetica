@@ -29,7 +29,7 @@ class HomeController extends Controller{
          ->where ( 'promotion' , '=', '1' )
          ->get();
         
-        $serviceAll = Service::all() ->where ( 'promotion' , '=', '1' );
+        $serviceAll = Service::all();
 
                  return view('home', compact('service', 'serviceAll', 'user' ));
     }
