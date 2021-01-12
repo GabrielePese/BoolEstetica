@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid p-0 m-0">
+<div class="container-fluid p-0 m-0 margineShow">
             <img src="{{ $service -> photo }}" style="width:100%;" alt="sfodno">
         <h1 class="showTitolo">{{ $service -> name }}</h1>
     </div>
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div class="container-fluid p-0 m-0 margineShow">
+<div class="container-fluid p-0 m-0">
        <iframe width="100%" height="800px" src="https://www.youtube.com/embed/_lLRGT_Wmqk" allowfullscreen></iframe>
 </div>
 
