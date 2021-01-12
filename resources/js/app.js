@@ -237,7 +237,7 @@ function checkStelle(){
 function init(){
   var target = $('#hamburgerMenu');
   target.on('click', function (){
-    var classeOpacita = $('.bootCarousTop').toggleClass("opacit")
+    var classeOpacita = $('main').toggleClass("opacit")
   });
 
 
