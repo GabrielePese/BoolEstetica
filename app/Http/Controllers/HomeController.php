@@ -29,11 +29,13 @@ class HomeController extends Controller{
         $user = User::all();
         $service = DB::table('services')
         ->where ( 'promotion' , '=', '1' )
-        ->orderBy('id');
+        ->orderBy('created_at' , 'desc')
+        ->get();
         
-        $serviceAll = Service::all() ->where ( 'promotion' , '=', '1' );
+
+        
       
-                 return view('home', compact('service', 'serviceAll', 'user' ));
+                 return view('home', compact('service', 'user' ));
     }
 
     public function chisiamo(){
