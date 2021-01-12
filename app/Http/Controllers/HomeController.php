@@ -25,14 +25,13 @@ class HomeController extends Controller{
         
  
         $user = User::all();
-        $service = Service::all();
-        $servicePromoCarousel = DB::table('services')
+        $service = DB::table('services')
          ->where ( 'promotion' , '=', '1' )
          ->get();
         
+        $serviceAll = Service::all() ->where ( 'promotion' , '=', '1' );
 
-         
-        return view('home', compact('service', 'servicePromoCarousel', 'user' ));
+                 return view('home', compact('service', 'serviceAll', 'user' ));
     }
 
     public function chisiamo(){
