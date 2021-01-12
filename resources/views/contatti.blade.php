@@ -4,7 +4,7 @@
     
 <div class="container">
     <div class="row">
-        <div class="col-8 mx-auto my-5">
+        <div class="col-8 mx-auto mb-5 chisiamo">
             <h1 class="text-center" style="font-family: 'great vibes'; font-size: 65px;">Contatti</h1>
 
         </div>

@@ -8,14 +8,14 @@
         <h1 class="text-center" style="font-family: 'great vibes'; font-size: 65px;">Trattamenti Decontratturanti</h1>
 
     </div>
-    <div class="row my-5">
+    <div class="row my-5 mx-auto">
            @foreach ($trattamentiDeco as $servizio)
         
             @if ($servizio -> delete  || $servizio -> disabled || $servizio -> id == 1)
         
             @else 
             <a href="{{route('show-tratt', $servizio -> id)}}" style="color: black;" >
-            <div class="col-12 col-md-4 bloccoAdmin mb-4">
+                <div class="col-md-12 col-lg-6 bloccoAdmin mb-4">
                     <div class="bloccoAdminImg">
                         <img src="{{$servizio -> photo}}" alt="">
     
