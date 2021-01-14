@@ -514,7 +514,7 @@ class LoggedController extends Controller
         
         $serviziInPercentuale = DB::table('service_user')
         ->join('services', 'service_user.service_ID', '=', 'services.id' )
-        ->select(DB::raw('count(*) as totale_servizi_fatti, services.id'), 'services.name')
+        ->select(DB::raw('count(*) as totale_servizi_fatti, services.id'), DB::raw('services.name'))
         ->where('service_user.deleted' , '=', '0')
         ->whereYear('date_start', $annoAttuale)
         ->groupBy('services.id')
