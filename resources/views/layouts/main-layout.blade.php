@@ -22,7 +22,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <script src="{{secure_asset('/js/app.js')}}" defer></script>   {{-- NON METTERE ASSET SENNO'NON VA PER HTTP E HTTPS!! INOLTRE METTE IL / PRIMA COSI QUANDO VAI NELLE SHOW ECC FUNZIONA!!! --}}
+    <script src="/js/app.js" defer></script>   {{-- NON METTERE ASSET SENNO'NON VA PER HTTP E HTTPS!! INOLTRE METTE IL / PRIMA COSI QUANDO VAI NELLE SHOW ECC FUNZIONA!!! --}}
     
     
 
@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;1,400&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{secure_asset('/css/app.css')}}" rel="stylesheet"> {{-- NON METTERE ASSET SENNO'NON VA PER HTTP E HTTPS!! INOLTRE METTE IL / PRIMA COSI QUANDO VAI NELLE SHOW ECC FUNZIONA!!! --}}
+    <link href="/css/app.css" rel="stylesheet"> {{-- NON METTERE ASSET SENNO'NON VA PER HTTP E HTTPS!! INOLTRE METTE IL / PRIMA COSI QUANDO VAI NELLE SHOW ECC FUNZIONA!!! --}}
     
 
 </head>
