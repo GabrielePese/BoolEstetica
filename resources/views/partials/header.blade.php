@@ -5,7 +5,7 @@
             <div class="container">
                 <ul>
                     <li class="logoMobile">
-                        <a class="navbar-brand" href="{{ url('/') }}" ><img src="{{asset('img/esteticaLogo.png')}}" alt="logo" style="height: 80px; width:100px; overflow:hideen;"> </a>
+                        <a class="navbar-brand" href="{{ url('/') }}" ><img src="img/esteticaLogo.png" alt="logo" style="height: 80px; width:100px; overflow:hideen;"> </a>
 
                     </li>
                 </ul>
@@ -34,7 +34,7 @@
                     <!-- Center Side Of Navbar -->
                     <ul class="navbar-nav mx-auto">
                         <li class="logo">
-                            <a class="navbar-brand" href="{{ url('/') }}" ><img src="{{asset('img/esteticaLogo.png')}}" alt="logo" style="margin-top:5px;height: 80px; width:100px; overflow:hideen;"> </a>
+                            <a class="navbar-brand" href="{{ url('/') }}" ><img src="img/esteticaLogo.png" alt="logo" style="margin-top:5px;height: 80px; width:100px; overflow:hideen;"> </a>
                         </li>
                     </ul>
 
