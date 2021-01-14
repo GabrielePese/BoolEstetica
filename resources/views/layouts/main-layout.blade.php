@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('EsteticaDea') }}</title>
 
     <!-- Scripts jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,7 +22,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <script src="js/app.js" defer></script>
+    <script src="js/app.js" defer></script>   {{-- NON METTERE ASSET MA LASCIALO COSI, PERCHE'QUANDO LO METTI ONLINE IL BROWSER NON CARICA IL FILE PER DISCORSO HTTP HTTPS. SE LO LASCI COSI FUNZIONA TUTTO!! --}}
+    
     
 
     <!-- Fonts -->
@@ -32,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;1,400&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="css/app.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet"> {{-- NON METTERE ASSET MA LASCIALO COSI, PERCHE'QUANDO LO METTI ONLINE IL BROWSER NON CARICA IL FILE PER DISCORSO HTTP HTTPS. SE LO LASCI COSI FUNZIONA TUTTO!! --}}
     
 
 </head>
