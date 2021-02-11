@@ -36,7 +36,7 @@ class TrattamentoPrenotato extends Mailable
     public function build()
     {
         return $this 
-        ->from('trattamentoprenotato@esteticadea.com')
+        ->from('gabrielepese@gmail.com')
         ->view('trattamentoPrenotato');
     }
 }
