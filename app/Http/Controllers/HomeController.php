@@ -119,7 +119,7 @@ class HomeController extends Controller{
         
 
 
-        Mail::to('create@amministrazione.com')
+        Mail::to('gabrielepese@gmail.com')
         ->send(new UserAction($user, $email,$phone,$messageOk));
 
         return redirect(route('home'));
