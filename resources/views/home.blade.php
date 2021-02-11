@@ -13,9 +13,10 @@
     @auth
         @if(Auth::user()->admin)
             {{-- questa parte la vedere il proprietario --}}
-            
+          
         @else
 
+        
         @endif
     @endauth
 

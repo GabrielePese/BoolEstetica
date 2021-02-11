@@ -13,6 +13,9 @@ class AddForeignKeys extends Migration
      */
     public function up()
     {
+
+        
+
         Schema::table('service_user', function(Blueprint $table){
             
             $table -> foreign('service_ID', 'us_ser')

@@ -444,8 +444,7 @@ class LoggedController extends Controller
             
             $promo = $request->input('subscription'); // prendo il promo-> discount quindi lo sconto
         
-
-            $prezzoServizio =$service['originalprice']; //salvo il prezzo originale
+             $prezzoServizio =$service['originalprice']; //salvo il prezzo originale
           
             $calcolo = $prezzoServizio * $promo / 100; 
             $prezzoScontato = $prezzoServizio - $calcolo;
