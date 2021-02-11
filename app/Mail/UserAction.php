@@ -35,7 +35,7 @@ class UserAction extends Mailable
     {
         
         return $this 
-        ->from('Contact form pagina Contatti')
+        ->from('from@gmail.com')
         ->view('email');
     }
 }
