@@ -389,7 +389,7 @@ class LoggedController extends Controller
 
             // dd($dati);
 
-        Mail::to('trattamentoannullato@amministrazione.com')
+        Mail::to('gabrielepese@gmail.com')
         ->send(new TrattamentoAnnullato($dati));
         
         return redirect() -> route('home');

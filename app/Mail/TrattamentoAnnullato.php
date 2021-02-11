@@ -26,7 +26,7 @@ class TrattamentoAnnullato extends Mailable
     public function build()
     {
         return $this 
-        ->from('trattamentoannullato@esteticadea.com')
+        ->from('gabrielepese@gmail.com')
         ->view('trattamentoAnnullato');
     
     }
