@@ -51,4 +51,13 @@ Route::get('/trattamentiEstetica', 'HomeController@trattamentiEstetica')-> name 
 Route::get('/trattamentiDeco', 'HomeController@trattamentiDeco')-> name ('trattamentiDeco');
 
 
+Route::get('/send-mail', function(){
+    $details =[
+        'title' => 'questo e il titolo della mail',
+        'body' => 'questo e il copro'
+    ];
+    \Mail::to('gabrielepese@gmail.com')->send(new \App\Mail\UserAction($details));
+    echo 'La mail é stata mandata, controlla la tua Gmail';
+});
+
 // prova

@@ -137,6 +137,7 @@ class LoggedController extends Controller
     {
         
         $service = Service::all();
+        
 
 
         return view('create-tratt', compact('service'));
