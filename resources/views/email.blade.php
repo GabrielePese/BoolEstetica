@@ -1,4 +1,4 @@
-{{-- <body>
+<body>
     La persona : {{$user}}, <br>
     con email: {{$email}}, <br>
     numero di telefono {{$phone}} ha scritto:  <br>
@@ -6,9 +6,9 @@
    
     {{$messageOk}} 
     
-</body> --}}
+</body>
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,4 +21,4 @@
     <h1>{{$details['body']}}</h1>
     <h1> Se leggi queste righe, vuol dire che ce l'hai fatta, pezzo di merda.</h1>
 </body>
-</html>
+</html> --}}
