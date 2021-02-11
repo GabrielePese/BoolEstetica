@@ -319,7 +319,7 @@ class LoggedController extends Controller
         
 
 
-        Mail::to([['mail' => 'garbielepese@gmail.com', 'name' => 'Titolo Mail']])
+        Mail::to('gabrielepese@gmail.com')
         ->send(new TrattamentoPrenotato($utente,$datagiorno,$dataorario,$orarioMail,$servizio));
 
        

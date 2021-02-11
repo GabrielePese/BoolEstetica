@@ -17,6 +17,13 @@ class UserAction extends Mailable
     public $messageOk;
    
 
+    // Per sbloccare GMAIL a livello di permessi oltre nei settings vai a questo link
+
+
+    // https://accounts.google.com/b/0/DisplayUnlockCaptcha
+
+
+
 
     public function __construct($user, $email, $phone, $messageOk)
     {
