@@ -1,5 +1,5 @@
 <body>
-    La persona : {{$user}}, <br>
+    La persona : {{$users}}, <br>
     con email: {{$email}}, <br>
     numero di telefono {{$phone}} ha scritto:  <br>
     <br>
