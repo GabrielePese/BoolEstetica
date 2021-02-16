@@ -119,7 +119,7 @@ class HomeController extends Controller{
         
 
 
-        Mail::to(strval($this -> email))
+        Mail::to(strval($email))
         ->send(new UserAction($users, $email,$phone,$messageOk));
 
 
