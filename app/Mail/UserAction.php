@@ -11,7 +11,7 @@ class UserAction extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $users;
     public $email;
     public $phone;
     public $messageOk;
@@ -25,9 +25,9 @@ class UserAction extends Mailable
 
 
 
-    public function __construct($user, $email, $phone, $messageOk)
+    public function __construct($users, $email, $phone, $messageOk)
     {
-        $this -> user = $user;
+        $this -> users = $users;
         $this -> email = $email;
         $this -> phone = $phone;
         $this -> messageOk = $messageOk;

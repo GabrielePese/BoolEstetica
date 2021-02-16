@@ -111,7 +111,7 @@ class HomeController extends Controller{
     public function email(Request $request){
         $data = $request -> all();
         dd($data);
-        $user = $data['txtName'];
+        $users = $data['txtName'];
         $email = $data['txtEmail'];
         $phone = $data["txtPhone"];
         $messageOk = $data['txtMsg'];
@@ -120,7 +120,8 @@ class HomeController extends Controller{
 
 
         Mail::to('gabrielepese@gmail.com')
-        ->send(new UserAction($user, $email,$phone,$messageOk));
+        ->send(new UserAction($users, $email,$phone,$messageOk));
+
 
         return redirect(route('home'));
 
