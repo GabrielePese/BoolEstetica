@@ -42,7 +42,8 @@ class UserAction extends Mailable
     {
         
         return $this 
-        ->from('from@gmail.com')
+        ->from(strval($this -> email))
+        ->subject('io sono oggetto')
         ->view('email');
     }
 }
