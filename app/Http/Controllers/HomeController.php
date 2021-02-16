@@ -110,7 +110,7 @@ class HomeController extends Controller{
 
     public function email(Request $request){
         $data = $request -> all();
-        dd($data);
+       
         $users = $data['txtName'];
         $email = $data['txtEmail'];
         $phone = $data["txtPhone"];
